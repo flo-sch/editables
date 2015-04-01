@@ -4,8 +4,12 @@
   "description": "HTML content builder interface built in JavaScript",
   "main": "index.js",
   "scripts": {
-    "dev": "watchify -v -t vueify -e src/main.js -o build/editables.js",
-    "build": "browserify -t vueify src/main.js | uglifyjs -c -m > build/editables.min.js"
+    "dev-styles": "cd assets && npm install && bower instal && gulp dev",
+    "dev-script": "watchify -v -t vueify -e src/main.js -o build/editables.js",
+    "build-styles": "cd assets && npm install && bower install && gulp build",
+    "build-script": "browserify -t vueify src/main.js | uglifyjs -c -m > build/editables.min.js",
+    "dev": "npm run dev-script & npm run dev-styles",
+    "build": "npm run build-script & npm run build-styles"
   },
   "repository": {
     "type": "git",

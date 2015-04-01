@@ -1,5 +1,5 @@
 <template>
-  <section id='editables-preview'>
+  <section id='editables-preview' v-on='drop: onDrop, dragover: onDragOver'>
     <header>
       <h2>Content</h2>
     </header>
@@ -9,18 +9,15 @@
 <script>
   module.exports = {
     replace: true,
-    compiled: function () {
-        console.log('Preview area is compiled');
+    inherit: true,
+    methods: {
+      onDrop: function (event) {
+        this.$el.appendChild(this.currentDraggedItem.$el);
+      },
+      onDragOver: function (event) {
+        event.preventDefault();
+      }
     },
     components: {}
   }
 </script>
-
-<style lang="scss">
-  @import "src/ui.scss";
-
-  #editables-preview {
-    margin-left: 250px;
-    padding: 15px 10px;
-  }
-</style>

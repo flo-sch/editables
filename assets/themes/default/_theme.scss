@@ -1,0 +1,32 @@
+@import "variables";
+
+@import "../../bower_components/normalize-scss/normalize";
+@import "../../bower_components/kube-scss/scss/kube";
+
+@import "fonts";
+
+html {
+  height: 100%;
+	body {
+    height: 100%;
+		#editables {
+			position: relative;
+			width: 100%;
+			height: 100%;
+			h1,
+			h2,
+			h3 {
+				font-family: "Delius Swash Caps", cursive;
+			}
+			h4,
+			h5,
+			h6,
+			p {
+				font-family: "Source Sans Pro", Arial, sans-serif;
+			}
+		}
+	}
+}
+
+@import "views/preview";
+@import "views/sidebar";

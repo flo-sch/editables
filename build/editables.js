@@ -1,28 +1,4 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var inserted = {};
-
-module.exports = function (css, options) {
-    if (inserted[css]) return;
-    inserted[css] = true;
-    
-    var elem = document.createElement('style');
-    elem.setAttribute('type', 'text/css');
-
-    if ('textContent' in elem) {
-      elem.textContent = css;
-    } else {
-      elem.styleSheet.cssText = css;
-    }
-    
-    var head = document.getElementsByTagName('head')[0];
-    if (options && options.prepend) {
-        head.insertBefore(elem, head.childNodes[0]);
-    } else {
-        head.appendChild(elem);
-    }
-};
-
-},{}],2:[function(require,module,exports){
 var _ = require('../util')
 
 /**
@@ -70,7 +46,7 @@ exports.$addChild = function (opts, BaseCtor) {
   this._children.push(child)
   return child
 }
-},{"../util":59}],3:[function(require,module,exports){
+},{"../util":58}],2:[function(require,module,exports){
 var _ = require('../util')
 var Watcher = require('../watcher')
 var Path = require('../parsers/path')
@@ -235,7 +211,7 @@ exports.$log = function (path) {
   }
   console.log(data)
 }
-},{"../parsers/directive":47,"../parsers/expression":48,"../parsers/path":49,"../parsers/text":51,"../util":59,"../watcher":63}],4:[function(require,module,exports){
+},{"../parsers/directive":46,"../parsers/expression":47,"../parsers/path":48,"../parsers/text":50,"../util":58,"../watcher":62}],3:[function(require,module,exports){
 var _ = require('../util')
 var transition = require('../transition')
 
@@ -447,7 +423,7 @@ function remove (el, vm, cb) {
   _.remove(el)
   if (cb) cb()
 }
-},{"../transition":53,"../util":59}],5:[function(require,module,exports){
+},{"../transition":52,"../util":58}],4:[function(require,module,exports){
 var _ = require('../util')
 
 /**
@@ -622,7 +598,7 @@ function modifyListenerCount (vm, event, count) {
     parent = parent.$parent
   }
 }
-},{"../util":59}],6:[function(require,module,exports){
+},{"../util":58}],5:[function(require,module,exports){
 var _ = require('../util')
 var mergeOptions = require('../util/merge-option')
 
@@ -769,7 +745,7 @@ function createAssetRegisters (Constructor) {
 }
 
 createAssetRegisters(exports)
-},{"../compiler/compile":10,"../compiler/transclude":11,"../config":12,"../parsers/directive":47,"../parsers/expression":48,"../parsers/path":49,"../parsers/template":50,"../parsers/text":51,"../util":59,"../util/merge-option":61}],7:[function(require,module,exports){
+},{"../compiler/compile":9,"../compiler/transclude":10,"../config":11,"../parsers/directive":46,"../parsers/expression":47,"../parsers/path":48,"../parsers/template":49,"../parsers/text":50,"../util":58,"../util/merge-option":60}],6:[function(require,module,exports){
 var _ = require('../util')
 var compile = require('../compiler/compile')
 
@@ -842,7 +818,7 @@ exports.$destroy = function (remove, deferCleanup) {
 exports.$compile = function (el) {
   return compile(el, this.$options, true)(this, el)
 }
-},{"../compiler/compile":10,"../util":59}],8:[function(require,module,exports){
+},{"../compiler/compile":9,"../util":58}],7:[function(require,module,exports){
 var _ = require('./util')
 var MAX_UPDATE_COUNT = 10
 
@@ -937,7 +913,7 @@ exports.push = function (job) {
     }
   }
 }
-},{"./util":59}],9:[function(require,module,exports){
+},{"./util":58}],8:[function(require,module,exports){
 /**
  * A doubly linked list-based Least Recently Used (LRU)
  * cache. Will keep most recently used items while
@@ -1050,7 +1026,7 @@ p.get = function (key, returnEntry) {
 }
 
 module.exports = Cache
-},{}],10:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 var _ = require('../util')
 var config = require('../config')
 var textParser = require('../parsers/text')
@@ -1615,7 +1591,7 @@ function directiveComparator (a, b) {
   b = b.def.priority || 0
   return a > b ? 1 : -1
 }
-},{"../config":12,"../parsers/directive":47,"../parsers/template":50,"../parsers/text":51,"../util":59}],11:[function(require,module,exports){
+},{"../config":11,"../parsers/directive":46,"../parsers/template":49,"../parsers/text":50,"../util":58}],10:[function(require,module,exports){
 var _ = require('../util')
 var templateParser = require('../parsers/template')
 
@@ -1765,7 +1741,7 @@ function insertContentAt (outlet, contents) {
   }
   parent.removeChild(outlet)
 }
-},{"../parsers/template":50,"../util":59}],12:[function(require,module,exports){
+},{"../parsers/template":49,"../util":58}],11:[function(require,module,exports){
 module.exports = {
 
   /**
@@ -1852,7 +1828,7 @@ Object.defineProperty(module.exports, 'delimiters', {
     this._delimitersChanged = true
   }
 })
-},{}],13:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 var _ = require('./util')
 var config = require('./config')
 var Watcher = require('./watcher')
@@ -2075,7 +2051,7 @@ p.set = function (value, lock) {
 }
 
 module.exports = Directive
-},{"./config":12,"./parsers/expression":48,"./parsers/text":51,"./util":59,"./watcher":63}],14:[function(require,module,exports){
+},{"./config":11,"./parsers/expression":47,"./parsers/text":50,"./util":58,"./watcher":62}],13:[function(require,module,exports){
 // xlink
 var xlinkNS = 'http://www.w3.org/1999/xlink'
 var xlinkRE = /^xlink:/
@@ -2108,7 +2084,7 @@ function xlinkHandler (value) {
     this.el.removeAttributeNS(xlinkNS, 'href')
   }
 }
-},{}],15:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 var _ = require('../util')
 var addClass = _.addClass
 var removeClass = _.removeClass
@@ -2127,7 +2103,7 @@ module.exports = function (value) {
     }
   }
 }
-},{"../util":59}],16:[function(require,module,exports){
+},{"../util":58}],15:[function(require,module,exports){
 var config = require('../config')
 
 module.exports = {
@@ -2140,7 +2116,7 @@ module.exports = {
   }
 
 }
-},{"../config":12}],17:[function(require,module,exports){
+},{"../config":11}],16:[function(require,module,exports){
 var _ = require('../util')
 var templateParser = require('../parsers/template')
 
@@ -2364,7 +2340,7 @@ module.exports = {
   }
 
 }
-},{"../parsers/template":50,"../util":59}],18:[function(require,module,exports){
+},{"../parsers/template":49,"../util":58}],17:[function(require,module,exports){
 module.exports = {
 
   isLiteral: true,
@@ -2378,7 +2354,7 @@ module.exports = {
   }
   
 }
-},{}],19:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 var _ = require('../util')
 
 module.exports = { 
@@ -2406,7 +2382,7 @@ module.exports = {
   // so no need for unbind here.
 
 }
-},{"../util":59}],20:[function(require,module,exports){
+},{"../util":58}],19:[function(require,module,exports){
 var _ = require('../util')
 var templateParser = require('../parsers/template')
 
@@ -2445,7 +2421,7 @@ module.exports = {
   }
 
 }
-},{"../parsers/template":50,"../util":59}],21:[function(require,module,exports){
+},{"../parsers/template":49,"../util":58}],20:[function(require,module,exports){
 var _ = require('../util')
 var compile = require('../compiler/compile')
 var templateParser = require('../parsers/template')
@@ -2529,7 +2505,7 @@ module.exports = {
   }
 
 }
-},{"../compiler/compile":10,"../parsers/template":50,"../transition":53,"../util":59}],22:[function(require,module,exports){
+},{"../compiler/compile":9,"../parsers/template":49,"../transition":52,"../util":58}],21:[function(require,module,exports){
 // manipulation directives
 exports.text       = require('./text')
 exports.html       = require('./html')
@@ -2555,7 +2531,7 @@ exports['if']      = require('./if')
 // child vm communication directives
 exports['with']    = require('./with')
 exports.events     = require('./events')
-},{"./attr":14,"./class":15,"./cloak":16,"./component":17,"./el":18,"./events":19,"./html":20,"./if":21,"./model":25,"./on":28,"./partial":29,"./ref":30,"./repeat":31,"./show":32,"./style":33,"./text":34,"./transition":35,"./with":36}],23:[function(require,module,exports){
+},{"./attr":13,"./class":14,"./cloak":15,"./component":16,"./el":17,"./events":18,"./html":19,"./if":20,"./model":24,"./on":27,"./partial":28,"./ref":29,"./repeat":30,"./show":31,"./style":32,"./text":33,"./transition":34,"./with":35}],22:[function(require,module,exports){
 var _ = require('../../util')
 
 module.exports = {
@@ -2581,7 +2557,7 @@ module.exports = {
   }
 
 }
-},{"../../util":59}],24:[function(require,module,exports){
+},{"../../util":58}],23:[function(require,module,exports){
 var _ = require('../../util')
 
 module.exports = {
@@ -2705,7 +2681,7 @@ module.exports = {
   }
 
 }
-},{"../../util":59}],25:[function(require,module,exports){
+},{"../../util":58}],24:[function(require,module,exports){
 var _ = require('../../util')
 
 var handlers = {
@@ -2762,7 +2738,7 @@ module.exports = {
   }
 
 }
-},{"../../util":59,"./checkbox":23,"./default":24,"./radio":26,"./select":27}],26:[function(require,module,exports){
+},{"../../util":58,"./checkbox":22,"./default":23,"./radio":25,"./select":26}],25:[function(require,module,exports){
 var _ = require('../../util')
 
 module.exports = {
@@ -2789,7 +2765,7 @@ module.exports = {
   }
 
 }
-},{"../../util":59}],27:[function(require,module,exports){
+},{"../../util":58}],26:[function(require,module,exports){
 var _ = require('../../util')
 var Watcher = require('../../watcher')
 
@@ -2963,7 +2939,7 @@ function indexOf (arr, val) {
   }
   return -1
 }
-},{"../../util":59,"../../watcher":63}],28:[function(require,module,exports){
+},{"../../util":58,"../../watcher":62}],27:[function(require,module,exports){
 var _ = require('../util')
 
 module.exports = {
@@ -3023,7 +2999,7 @@ module.exports = {
     _.off(this.el, 'load', this.iframeBind)
   }
 }
-},{"../util":59}],29:[function(require,module,exports){
+},{"../util":58}],28:[function(require,module,exports){
 var _ = require('../util')
 var templateParser = require('../parsers/template')
 var vIf = require('./if')
@@ -3068,7 +3044,7 @@ module.exports = {
   }
 
 }
-},{"../parsers/template":50,"../util":59,"./if":21}],30:[function(require,module,exports){
+},{"../parsers/template":49,"../util":58,"./if":20}],29:[function(require,module,exports){
 var _ = require('../util')
 
 module.exports = {
@@ -3092,7 +3068,7 @@ module.exports = {
   }
   
 }
-},{"../util":59}],31:[function(require,module,exports){
+},{"../util":58}],30:[function(require,module,exports){
 var _ = require('../util')
 var isObject = _.isObject
 var isPlainObject = _.isPlainObject
@@ -3597,7 +3573,7 @@ function range (n) {
   }
   return ret
 }
-},{"../compiler/compile":10,"../compiler/transclude":11,"../parsers/expression":48,"../parsers/template":50,"../parsers/text":51,"../util":59,"../util/merge-option":61}],32:[function(require,module,exports){
+},{"../compiler/compile":9,"../compiler/transclude":10,"../parsers/expression":47,"../parsers/template":49,"../parsers/text":50,"../util":58,"../util/merge-option":60}],31:[function(require,module,exports){
 var transition = require('../transition')
 
 module.exports = function (value) {
@@ -3606,7 +3582,7 @@ module.exports = function (value) {
     el.style.display = value ? '' : 'none'
   }, this.vm)
 }
-},{"../transition":53}],33:[function(require,module,exports){
+},{"../transition":52}],32:[function(require,module,exports){
 var _ = require('../util')
 var prefixes = ['-webkit-', '-moz-', '-ms-']
 var camelPrefixes = ['Webkit', 'Moz', 'ms']
@@ -3707,7 +3683,7 @@ function prefix (prop) {
     }
   }
 }
-},{"../util":59}],34:[function(require,module,exports){
+},{"../util":58}],33:[function(require,module,exports){
 var _ = require('../util')
 
 module.exports = {
@@ -3723,7 +3699,7 @@ module.exports = {
   }
   
 }
-},{"../util":59}],35:[function(require,module,exports){
+},{"../util":58}],34:[function(require,module,exports){
 module.exports = {
 
   priority: 1000,
@@ -3738,7 +3714,7 @@ module.exports = {
   }
 
 }
-},{}],36:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 var _ = require('../util')
 var Watcher = require('../watcher')
 
@@ -3812,7 +3788,7 @@ module.exports = {
   }
 
 }
-},{"../util":59,"../watcher":63}],37:[function(require,module,exports){
+},{"../util":58,"../watcher":62}],36:[function(require,module,exports){
 var _ = require('../util')
 var Path = require('../parsers/path')
 
@@ -3900,7 +3876,7 @@ function contains (val, search) {
     return val.toString().toLowerCase().indexOf(search) > -1
   }
 }
-},{"../parsers/path":49,"../util":59}],38:[function(require,module,exports){
+},{"../parsers/path":48,"../util":58}],37:[function(require,module,exports){
 var _ = require('../util')
 
 /**
@@ -4036,7 +4012,7 @@ exports.key.keyCodes = keyCodes
  */
 
 _.extend(exports, require('./array-filters'))
-},{"../util":59,"./array-filters":37}],39:[function(require,module,exports){
+},{"../util":58,"./array-filters":36}],38:[function(require,module,exports){
 var _ = require('../util')
 var Directive = require('../directive')
 var compile = require('../compiler/compile')
@@ -4225,7 +4201,7 @@ exports._cleanup = function () {
   // turn off all instance listeners.
   this.$off()
 }
-},{"../compiler/compile":10,"../compiler/transclude":11,"../directive":13,"../util":59}],40:[function(require,module,exports){
+},{"../compiler/compile":9,"../compiler/transclude":10,"../directive":12,"../util":58}],39:[function(require,module,exports){
 var _ = require('../util')
 var inDoc = _.inDoc
 
@@ -4364,7 +4340,7 @@ exports._callHook = function (hook) {
   }
   this.$emit('hook:' + hook)
 }
-},{"../util":59}],41:[function(require,module,exports){
+},{"../util":58}],40:[function(require,module,exports){
 var mergeOptions = require('../util/merge-option')
 
 /**
@@ -4442,7 +4418,7 @@ exports._init = function (options) {
     this.$mount(options.el)
   }
 }
-},{"../util/merge-option":61}],42:[function(require,module,exports){
+},{"../util/merge-option":60}],41:[function(require,module,exports){
 var _ = require('../util')
 var Observer = require('../observer')
 var Dep = require('../observer/dep')
@@ -4657,7 +4633,7 @@ exports._defineMeta = function (key, value) {
     }
   })
 }
-},{"../observer":45,"../observer/dep":44,"../util":59}],43:[function(require,module,exports){
+},{"../observer":44,"../observer/dep":43,"../util":58}],42:[function(require,module,exports){
 var _ = require('../util')
 var arrayProto = Array.prototype
 var arrayMethods = Object.create(arrayProto)
@@ -4748,7 +4724,7 @@ _.define(
 )
 
 module.exports = arrayMethods
-},{"../util":59}],44:[function(require,module,exports){
+},{"../util":58}],43:[function(require,module,exports){
 var uid = 0
 
 /**
@@ -4799,7 +4775,7 @@ p.notify = function () {
 }
 
 module.exports = Dep
-},{}],45:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 var _ = require('../util')
 var config = require('../config')
 var Dep = require('./dep')
@@ -5036,7 +5012,7 @@ p.removeVm = function (vm) {
 
 module.exports = Observer
 
-},{"../config":12,"../util":59,"./array":43,"./dep":44,"./object":46}],46:[function(require,module,exports){
+},{"../config":11,"../util":58,"./array":42,"./dep":43,"./object":45}],45:[function(require,module,exports){
 var _ = require('../util')
 var objProto = Object.prototype
 
@@ -5103,7 +5079,7 @@ _.define(
     }
   }
 )
-},{"../util":59}],47:[function(require,module,exports){
+},{"../util":58}],46:[function(require,module,exports){
 var _ = require('../util')
 var Cache = require('../cache')
 var cache = new Cache(1000)
@@ -5263,7 +5239,7 @@ exports.parse = function (s) {
   cache.put(s, dirs)
   return dirs
 }
-},{"../cache":9,"../util":59}],48:[function(require,module,exports){
+},{"../cache":8,"../util":58}],47:[function(require,module,exports){
 var _ = require('../util')
 var Path = require('./path')
 var Cache = require('../cache')
@@ -5491,7 +5467,7 @@ exports.parse = function (exp, needSet) {
 
 // Export the pathRegex for external use
 exports.pathTestRE = pathTestRE
-},{"../cache":9,"../util":59,"./path":49}],49:[function(require,module,exports){
+},{"../cache":8,"../util":58,"./path":48}],48:[function(require,module,exports){
 var _ = require('../util')
 var Cache = require('../cache')
 var pathCache = new Cache(1000)
@@ -5789,7 +5765,7 @@ exports.set = function (obj, path, val) {
   }
   return true
 }
-},{"../cache":9,"../util":59}],50:[function(require,module,exports){
+},{"../cache":8,"../util":58}],49:[function(require,module,exports){
 var _ = require('../util')
 var Cache = require('../cache')
 var templateCache = new Cache(1000)
@@ -6040,7 +6016,7 @@ exports.parse = function (template, clone, noSelector) {
     ? exports.clone(frag)
     : frag
 }
-},{"../cache":9,"../util":59}],51:[function(require,module,exports){
+},{"../cache":8,"../util":58}],50:[function(require,module,exports){
 var Cache = require('../cache')
 var config = require('../config')
 var dirParser = require('./directive')
@@ -6219,7 +6195,7 @@ function inlineFilters (exp) {
     }
   }
 }
-},{"../cache":9,"../config":12,"./directive":47}],52:[function(require,module,exports){
+},{"../cache":8,"../config":11,"./directive":46}],51:[function(require,module,exports){
 var _ = require('../util')
 var addClass = _.addClass
 var removeClass = _.removeClass
@@ -6409,7 +6385,7 @@ module.exports = function (el, direction, op, data, cb) {
     push(el, direction, op, leaveClass, cb)
   }
 }
-},{"../util":59}],53:[function(require,module,exports){
+},{"../util":58}],52:[function(require,module,exports){
 var _ = require('../util')
 var applyCSSTransition = require('./css')
 var applyJSTransition = require('./js')
@@ -6561,7 +6537,7 @@ var apply = exports.apply = function (el, direction, op, vm, cb) {
     if (cb) cb()
   }
 }
-},{"../util":59,"./css":52,"./js":54}],54:[function(require,module,exports){
+},{"../util":58,"./css":51,"./js":53}],53:[function(require,module,exports){
 /**
  * Apply JavaScript enter/leave functions.
  *
@@ -6605,7 +6581,7 @@ module.exports = function (el, direction, op, data, def, vm, cb) {
     }
   }
 }
-},{}],55:[function(require,module,exports){
+},{}],54:[function(require,module,exports){
 var config = require('../config')
 
 /**
@@ -6666,7 +6642,7 @@ function enableDebug () {
     }
   }
 }
-},{"../config":12}],56:[function(require,module,exports){
+},{"../config":11}],55:[function(require,module,exports){
 var config = require('../config')
 
 /**
@@ -6864,7 +6840,7 @@ exports.extractContent = function (el) {
   }
   return rawContent
 }
-},{"../config":12}],57:[function(require,module,exports){
+},{"../config":11}],56:[function(require,module,exports){
 /**
  * Can we use __proto__?
  *
@@ -6971,7 +6947,7 @@ if (inBrowser && !exports.isIE9) {
     ? 'webkitAnimationEnd'
     : 'animationend'
 }
-},{}],58:[function(require,module,exports){
+},{}],57:[function(require,module,exports){
 var _ = require('./debug')
 
 /**
@@ -7044,7 +7020,7 @@ exports.applyFilters = function (value, filters, vm, oldVal) {
   }
   return value
 }
-},{"./debug":55}],59:[function(require,module,exports){
+},{"./debug":54}],58:[function(require,module,exports){
 var lang   = require('./lang')
 var extend = lang.extend
 
@@ -7053,7 +7029,7 @@ extend(exports, require('./env'))
 extend(exports, require('./dom'))
 extend(exports, require('./filter'))
 extend(exports, require('./debug'))
-},{"./debug":55,"./dom":56,"./env":57,"./filter":58,"./lang":60}],60:[function(require,module,exports){
+},{"./debug":54,"./dom":55,"./env":56,"./filter":57,"./lang":59}],59:[function(require,module,exports){
 /**
  * Check is a string starts with $ or _
  *
@@ -7229,7 +7205,7 @@ exports.define = function (obj, key, val, enumerable) {
     configurable : true
   })
 }
-},{}],61:[function(require,module,exports){
+},{}],60:[function(require,module,exports){
 var _ = require('./index')
 var extend = _.extend
 
@@ -7488,7 +7464,7 @@ module.exports = function mergeOptions (parent, child, vm) {
   }
   return options
 }
-},{"./index":59}],62:[function(require,module,exports){
+},{"./index":58}],61:[function(require,module,exports){
 var _ = require('./util')
 var extend = _.extend
 
@@ -7573,7 +7549,7 @@ extend(p, require('./api/child'))
 extend(p, require('./api/lifecycle'))
 
 module.exports = _.Vue = Vue
-},{"./api/child":2,"./api/data":3,"./api/dom":4,"./api/events":5,"./api/global":6,"./api/lifecycle":7,"./directives":22,"./filters":38,"./instance/compile":39,"./instance/events":40,"./instance/init":41,"./instance/scope":42,"./util":59}],63:[function(require,module,exports){
+},{"./api/child":1,"./api/data":2,"./api/dom":3,"./api/events":4,"./api/global":5,"./api/lifecycle":6,"./directives":21,"./filters":37,"./instance/compile":38,"./instance/events":39,"./instance/init":40,"./instance/scope":41,"./util":58}],62:[function(require,module,exports){
 var _ = require('./util')
 var config = require('./config')
 var Observer = require('./observer')
@@ -7831,12 +7807,20 @@ function traverse (obj) {
 }
 
 module.exports = Watcher
-},{"./batcher":8,"./config":12,"./observer":45,"./parsers/expression":48,"./util":59}],64:[function(require,module,exports){
-require("insert-css")("@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,300italic,400italic|Delius+Swash+Caps);*{margin:0;padding:0;box-sizing:border-box}html,html body{height:100%}html body h1,html body h2,html body h3{font-family:\"Delius Swash Caps\",cursive}html body h4,html body h5,html body h6,html body p{font-family:\"Source Sans Pro\",Arial,sans-serif}html body #editables{position:relative;width:100%;height:100%}");
+},{"./batcher":7,"./config":11,"./observer":44,"./parsers/expression":47,"./util":58}],63:[function(require,module,exports){
 var __vue_template__ = "<editables-sidebar></editables-sidebar>\n  <editables-preview></editables-preview>";
 module.exports = {
     el: '#editables',
-    data: {},
+    events: {
+      'editables:sidebar:drag-item': function (item) {
+        this.currentDraggedItem = item;
+      }
+    },
+    data: function () {
+      return {
+        currentDraggedItem: null
+      }
+    },
     components: {
       'editables-sidebar': require('./views/sidebar-view.vue'),
       'editables-preview': require('./views/preview-view.vue'),
@@ -7844,35 +7828,50 @@ module.exports = {
   }
 module.exports.template = __vue_template__;
 
-},{"./views/preview-view.vue":66,"./views/sidebar-view.vue":67,"insert-css":1}],65:[function(require,module,exports){
+},{"./views/preview-view.vue":66,"./views/sidebar-view.vue":67}],64:[function(require,module,exports){
 /**
  * Bootstrap UI application with Vue
  */
 
 var Vue = require('vue');
 new Vue(require('./app.vue'));
-},{"./app.vue":64,"vue":62}],66:[function(require,module,exports){
-require("insert-css")("#editables-preview{margin-left:250px;padding:15px 10px}");
-var __vue_template__ = "<section id=\"editables-preview\">\n    <header>\n      <h2>Content</h2>\n    </header>\n  </section>";
+},{"./app.vue":63,"vue":61}],65:[function(require,module,exports){
+var __vue_template__ = "<div class=\"e-model e-div unit-33\" draggable=\"true\" v-on=\"dragstart: onDragStart\"></div>";
+module.exports = {
+  	replace: true,
+    methods: {
+    	onDragStart: function (event) {
+    		this.$dispatch('editables:sidebar:drag-item', this);
+    	}
+    }
+  }
+module.exports.template = __vue_template__;
+
+},{}],66:[function(require,module,exports){
+var __vue_template__ = "<section id=\"editables-preview\" v-on=\"drop: onDrop, dragover: onDragOver\">\n    <header>\n      <h2>Content</h2>\n    </header>\n  </section>";
 module.exports = {
     replace: true,
-    compiled: function () {
-        console.log('Preview area is compiled');
+    inherit: true,
+    methods: {
+      onDrop: function (event) {
+        this.$el.appendChild(this.currentDraggedItem.$el);
+      },
+      onDragOver: function (event) {
+        event.preventDefault();
+      }
     },
     components: {}
   }
 module.exports.template = __vue_template__;
 
-},{"insert-css":1}],67:[function(require,module,exports){
-require("insert-css")("#editables-sidebar{position:absolute;top:0;left:0;width:250px;height:100%;padding:15px 10px;box-sizing:border-box;background:#1f242a;color:#d7d9da}");
-var __vue_template__ = "<aside id=\"editables-sidebar\">\n    <header>\n      <h2>Editables</h2>\n    </header>\n  </aside>";
+},{}],67:[function(require,module,exports){
+var __vue_template__ = "<aside id=\"editables-sidebar\">\n    <header>\n      <h2>Editables</h2>\n    </header>\n    <hr>\n    <div id=\"containers\" class=\"units-row\">\n      <div-view></div-view>\n    </div>\n  </aside>";
 module.exports = {
     replace: true,
-    compiled: function () {
-        console.log('Sidebar is compiled');
-    },
-    components: {}
+    components: {
+      'div-view': require('./containers/div-view.vue')
+    }
   }
 module.exports.template = __vue_template__;
 
-},{"insert-css":1}]},{},[65]);
+},{"./containers/div-view.vue":65}]},{},[64]);

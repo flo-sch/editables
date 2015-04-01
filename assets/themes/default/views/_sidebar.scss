@@ -1,0 +1,24 @@
+@import "../colors";
+
+#editables-sidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  padding: 15px 10px;
+  box-sizing: border-box;
+  background: $theme-dark;
+  color: $theme-light;
+  header {
+  	h2 {
+  		color: inherit;
+  	}
+  }
+  .e-model {
+    background: $theme-light;
+    border: 1px solid darken($theme-light, 8);
+  }
+}
+
+@import "containers/div-view";

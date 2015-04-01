@@ -1,0 +1,21 @@
+{
+  "name": "editables",
+  "version": "0.0.1",
+  "authors": [
+    "Florent Schildknecht <contact@florentschildknecht.com>"
+  ],
+  "description": "HTML content builder interface built in JavaScript",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "kube-scss": "*",
+    "normalize-scss": "~3.0.2"
+  }
+}
