@@ -51,12 +51,12 @@ gulp.task('watch', function () {
   gulp.watch(paths.scss + '*.scss', ['themes']);
 });
 
-// Dev
-gulp.task('dev', ['themes'], function () {
+// Serve
+gulp.task('serve', ['themes'], function () {
   gulp.start('watch');
 });
 
-// Dev
+// Build
 gulp.task('build', ['themes']);
 
 // Default task
