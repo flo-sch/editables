@@ -7832,7 +7832,7 @@ function traverse (obj) {
 
 module.exports = Watcher
 },{"./batcher":8,"./config":12,"./observer":45,"./parsers/expression":48,"./util":59}],64:[function(require,module,exports){
-require("insert-css")("*{margin:0;padding:0;box-sizing:border-box}html,html body{height:100%}html body #editables{position:relative;width:100%;height:100%}");
+require("insert-css")("@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,300italic,400italic|Delius+Swash+Caps);*{margin:0;padding:0;box-sizing:border-box}html,html body{height:100%}html body h1,html body h2,html body h3{font-family:\"Delius Swash Caps\",cursive}html body h4,html body h5,html body h6,html body p{font-family:\"Source Sans Pro\",Arial,sans-serif}html body #editables{position:relative;width:100%;height:100%}");
 var __vue_template__ = "<editables-sidebar></editables-sidebar>\n  <editables-preview></editables-preview>";
 module.exports = {
     el: '#editables',
