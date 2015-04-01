@@ -7808,7 +7808,7 @@ function traverse (obj) {
 
 module.exports = Watcher
 },{"./batcher":7,"./config":11,"./observer":44,"./parsers/expression":47,"./util":58}],63:[function(require,module,exports){
-var __vue_template__ = "<editables-sidebar></editables-sidebar>\n  <editables-preview></editables-preview>";
+var __vue_template__ = "<editables-sidebar></editables-sidebar>\n  <section id=\"editables-preview-container\">\n    <header id=\"editables-preview-header\">\n      <h2>Content</h2>\n    </header>\n    <editables-preview></editables-preview>\n  </section>";
 module.exports = {
     el: '#editables',
     events: {
@@ -7823,7 +7823,7 @@ module.exports = {
     },
     components: {
       'editables-sidebar': require('./views/sidebar-view.vue'),
-      'editables-preview': require('./views/preview-view.vue'),
+      'editables-preview': require('./views/preview-view.vue')
     }
   }
 module.exports.template = __vue_template__;
@@ -7838,26 +7838,50 @@ new Vue(require('./app.vue'));
 },{"./app.vue":63,"vue":61}],65:[function(require,module,exports){
 var __vue_template__ = "<div class=\"e-model e-div unit-33\" draggable=\"true\" v-on=\"dragstart: onDragStart\"></div>";
 module.exports = {
-  	replace: true,
+    replace: true,
+    data: function () {
+      return {
+        isModel: true
+      }
+    },
     methods: {
-    	onDragStart: function (event) {
-    		this.$dispatch('editables:sidebar:drag-item', this);
-    	}
+      onDragStart: function (event) {
+        this.$dispatch('editables:sidebar:drag-item', this);
+      }
     }
   }
 module.exports.template = __vue_template__;
 
 },{}],66:[function(require,module,exports){
-var __vue_template__ = "<section id=\"editables-preview\" v-on=\"drop: onDrop, dragover: onDragOver\">\n    <header>\n      <h2>Content</h2>\n    </header>\n  </section>";
+var __vue_template__ = "<section id=\"editables-preview\" v-on=\"drop: onDrop, dragenter: onDragEnter, dragover: onDragOver, dragleave: onDragLeave\"></section>";
 module.exports = {
     replace: true,
     inherit: true,
+    data: function () {
+      return {
+        elements: []
+      }
+    },
     methods: {
       onDrop: function (event) {
-        this.$el.appendChild(this.currentDraggedItem.$el);
+        this.$el.classList.remove('droppable');
+
+        if (this.currentDraggedItem) {
+          var clone = this.currentDraggedItem.$el.cloneNode(true);
+          clone.classList.remove('e-model')
+          clone.classList.add('e-element');
+          this.$el.appendChild(clone);
+          this.currentDraggedItem = null;
+        }
       },
       onDragOver: function (event) {
         event.preventDefault();
+      },
+      onDragEnter: function (event) {
+        this.$el.classList.add('droppable');
+      },
+      onDragLeave: function (event) {
+        this.$el.classList.remove('droppable');
       }
     },
     components: {}

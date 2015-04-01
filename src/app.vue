@@ -1,6 +1,11 @@
 <template>
   <editables-sidebar></editables-sidebar>
-  <editables-preview></editables-preview>
+  <section id='editables-preview-container'>
+    <header id='editables-preview-header'>
+      <h2>Content</h2>
+    </header>
+    <editables-preview></editables-preview>
+  </section>
 </template>
 
 <script>
@@ -18,7 +23,7 @@
     },
     components: {
       'editables-sidebar': require('./views/sidebar-view.vue'),
-      'editables-preview': require('./views/preview-view.vue'),
+      'editables-preview': require('./views/preview-view.vue')
     }
   }
 </script>

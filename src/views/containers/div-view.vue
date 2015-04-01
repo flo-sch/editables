@@ -4,11 +4,16 @@
 
 <script>
   module.exports = {
-  	replace: true,
+    replace: true,
+    data: function () {
+      return {
+        isModel: true
+      }
+    },
     methods: {
-    	onDragStart: function (event) {
-    		this.$dispatch('editables:sidebar:drag-item', this);
-    	}
+      onDragStart: function (event) {
+        this.$dispatch('editables:sidebar:drag-item', this);
+      }
     }
   }
 </script>

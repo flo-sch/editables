@@ -2585,11 +2585,43 @@ html body #editables h6,
 html body #editables p {
   font-family: "Source Sans Pro", Arial, sans-serif;
 }
+html body #editables .e-model {
+  cursor: move;
+}
 
-#editables-preview {
+#editables-preview-container {
   height: 100%;
   margin-left: 250px;
-  padding: 15px 10px;
+}
+#editables-preview-container #editables-preview-header {
+  position: relative;
+  background: black;
+  color: white;
+  text-align: center;
+  padding: 8px 0;
+  z-index: 10;
+}
+#editables-preview-container #editables-preview-header h2 {
+  margin: 0;
+  color: inherit;
+  line-height: 34px;
+}
+#editables-preview-container #editables-preview {
+  margin-top: -50px;
+  padding: 60px 10px 0 10px;
+  height: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: #f7f7f1;
+  transition: background 0.11s ease-in-out;
+  overflow: auto;
+}
+#editables-preview-container #editables-preview.droppable {
+  background: #dde7f1;
+}
+#editables-preview-container #editables-preview .e-element {
+  border: 1px solid #dedede;
+  margin-bottom: 5px;
 }
 
 #editables-sidebar {
