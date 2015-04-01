@@ -1,0 +1,38 @@
+{
+  "name": "editables",
+  "version": "0.0.1",
+  "description": "HTML content builder interface built in JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "dev": "watchify -v -t vueify -e src/main.js -o build/editables.js",
+    "build": "browserify -t vueify src/main.js | uglifyjs -c -m > build/editables.min.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Flo-Schield-Bobby/editables.git"
+  },
+  "keywords": [
+    "backend",
+    "UI",
+    "content",
+    "builder",
+    "interface"
+  ],
+  "author": "Florent Schildknecht <contact@florentschildknecht.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Flo-Schield-Bobby/editables/issues"
+  },
+  "homepage": "https://github.com/Flo-Schield-Bobby/editables",
+  "dependencies": {
+    "browserify": "^9.0.4",
+    "insert-css": "^0.2.0",
+    "uglify-js": "^2.4.19",
+    "vue": "^0.11.5",
+    "vueify": "^1.1.2"
+  },
+  "devDependencies": {
+    "node-sass": "^2.1.1",
+    "watchify": "^3.1.0"
+  }
+}

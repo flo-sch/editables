@@ -4,3 +4,6 @@
 # Dev files
 cache
 *.log
+
+# NodeJS modules
+node_modules
