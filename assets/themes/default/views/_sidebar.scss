@@ -1,4 +1,5 @@
 @import "../colors";
+@import "../variables";
 
 #editables-sidebar {
   position: absolute;
@@ -16,9 +17,13 @@
   	}
   }
   .e-model {
+    height: $sidebar-model-height;
+    line-height: $sidebar-model-height;
+    text-align: center;
     background: $theme-light;
-    border: 1px solid darken($theme-light, 8);
+    color: $theme-dark;
+    border: 3px solid darken($theme-light, 8);
   }
 }
 
-@import "containers/div-view";
+@import "containers/model-div";

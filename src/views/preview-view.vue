@@ -8,18 +8,10 @@
     inherit: true,
     data: function () {
       return {
-        elements: [],
-        foo: 'bar'
+        elements: []
       }
     },
     methods: {
-      onDrop: function (event) {
-        this.$el.classList.remove('droppable');
-
-        var container = new this.$root.models.Container();
-        container.$appendTo(this.$el);
-        this.elements.push(container);
-      },
       onDragOver: function (event) {
         event.preventDefault();
       },
@@ -28,8 +20,22 @@
       },
       onDragLeave: function (event) {
         this.$el.classList.remove('droppable');
+      },
+      onDrop: function (event) {
+        this.$el.classList.remove('droppable');
+
+        if (this.currentDraggedModel !== null) {
+          if (this.currentDraggedModel in this.models) {
+            var element = this.$addChild({}, this.models[this.currentDraggedModel]);
+            element.$appendTo(this.$el);
+            this.elements.push(element);
+
+            this.currentDraggedModel = null;
+          } else {
+            console.warn('Unregistred or unsupported model', this.currentDraggedModel);
+          }
+        }
       }
-    },
-    components: {}
+    }
   }
 </script>

@@ -7809,19 +7809,24 @@ function traverse (obj) {
 module.exports = Watcher
 },{"./batcher":7,"./config":11,"./observer":44,"./parsers/expression":47,"./util":58}],63:[function(require,module,exports){
 var __vue_template__ = "<editables-sidebar></editables-sidebar>\n  <section id=\"editables-preview-container\">\n    <header id=\"editables-preview-header\">\n      <h2>Content</h2>\n    </header>\n    <editables-preview></editables-preview>\n  </section>";
-module.exports = {
+var Vue = require('vue');
+  var Container = Vue.extend(require('./components/containers/container.js'));
+
+  module.exports = {
     el: '#editables',
     events: {
-      'editables:sidebar:drag-item': function (item) {
-        this.currentDraggedItem = item;
+      'editables:sidebar:drag-item': function (model) {
+        this.currentDraggedModel = model;
       }
     },
     data: function () {
       return {
+        currentDraggedModel: null,
         models: {
-          Container: null,
-        },
-        currentDraggedItem: null
+          Div: Container.extend(require('./components/containers/div.js')),
+          Section: Container.extend(require('./components/containers/section.js')),
+          Row: Container.extend(require('./components/containers/row.js'))
+        }
       }
     },
     components: {
@@ -7831,22 +7836,9 @@ module.exports = {
   }
 module.exports.template = __vue_template__;
 
-},{"./views/preview-view.vue":66,"./views/sidebar-view.vue":67}],64:[function(require,module,exports){
-/**
- * Bootstrap UI application with Vue
- */
-
-var Vue = require('vue');
-var app = new Vue(require('./app.vue'));
-app.models.Container = Vue.extend({
+},{"./components/containers/container.js":64,"./components/containers/div.js":65,"./components/containers/row.js":66,"./components/containers/section.js":67,"./views/preview-view.vue":72,"./views/sidebar-view.vue":73,"vue":61}],64:[function(require,module,exports){
+module.exports = {
   inherit: true,
-  el: function () {
-    var el = document.createElement('div');
-    el.classList.add('e-element');
-    el.setAttribute('draggable', true);
-    el.setAttribute('v-on', 'dragenter: onDragEnter, dragleave: onDragLeave, drop: onDrop');
-    return el;
-  },
   data: function () {
     return {
       elements: []
@@ -7865,49 +7857,131 @@ app.models.Container = Vue.extend({
     onDrop: function (event) {
       this.$el.classList.remove('droppable');
 
-      console.log('drop', event, this.$data);
-      event.stopPropagation();
+      console.log('drop', event, this, this.currentDraggedModel);
 
-      // this.elements[].push()
+      if (this.currentDraggedModel !== null) {
+        if (this.currentDraggedModel in this.models) {
+          var element = this.$addChild({}, this.models[this.currentDraggedModel]);
+          element.$appendTo(this.$el);
+          this.elements.push(element);
+
+          this.currentDraggedModel = null;
+        } else {
+          console.warn('Unregistred or unsupported model', this.currentDraggedModel);
+        }
+      }
+
+      event.stopPropagation();
     }
   }
-});
-},{"./app.vue":63,"vue":61}],65:[function(require,module,exports){
-var __vue_template__ = "<div class=\"e-model e-div unit-33\" draggable=\"true\" v-on=\"dragstart: onDragStart\"></div>";
+}
+},{}],65:[function(require,module,exports){
+module.exports = {
+  el: function () {
+    var el = document.createElement('div');
+    el.classList.add('e-element');
+    el.setAttribute('draggable', true);
+    el.setAttribute('v-on', 'dragenter: onDragEnter, dragleave: onDragLeave, drop: onDrop');
+
+    return el;
+  }
+}
+},{}],66:[function(require,module,exports){
+module.exports = {
+	template: '<div class="col unit-50">1</div><div class="col unit-50">2</div>',
+  el: function () {
+    var el = document.createElement('div');
+    el.classList.add('e-element');
+    el.classList.add('units-row');
+    el.setAttribute('draggable', true);
+    el.setAttribute('v-on', 'dragenter: onDragEnter, dragleave: onDragLeave, drop: onDrop');
+
+    return el;
+  }
+}
+},{}],67:[function(require,module,exports){
+module.exports = {
+  el: function () {
+    var el = document.createElement('section');
+    el.classList.add('e-element');
+    el.setAttribute('draggable', true);
+    el.setAttribute('v-on', 'dragenter: onDragEnter, dragleave: onDragLeave, drop: onDrop');
+
+    return el;
+  }
+}
+},{}],68:[function(require,module,exports){
+/**
+ * Bootstrap UI application with Vue
+ */
+
+var Vue = require('vue');
+Vue.config.debug = true;
+
+var app = new Vue(require('./app.vue'));
+},{"./app.vue":63,"vue":61}],69:[function(require,module,exports){
+var __vue_template__ = "<div class=\"e-model e-div unit-33\" draggable=\"true\" v-on=\"dragstart: onDragStart\">Div</div>";
 module.exports = {
     replace: true,
     data: function () {
       return {
-        isModel: true
+        model: 'Div'
       }
     },
     methods: {
       onDragStart: function (event) {
-        this.$dispatch('editables:sidebar:drag-item', this);
+        this.$dispatch('editables:sidebar:drag-item', this.model);
       }
     }
   }
 module.exports.template = __vue_template__;
 
-},{}],66:[function(require,module,exports){
+},{}],70:[function(require,module,exports){
+var __vue_template__ = "<div class=\"e-model e-row unit-33\" draggable=\"true\" v-on=\"dragstart: onDragStart\">Row</div>";
+module.exports = {
+    replace: true,
+    data: function () {
+      return {
+        isModel: true,
+        model: 'Row'
+      }
+    },
+    methods: {
+      onDragStart: function (event) {
+        this.$dispatch('editables:sidebar:drag-item', this.model);
+      }
+    }
+  }
+module.exports.template = __vue_template__;
+
+},{}],71:[function(require,module,exports){
+var __vue_template__ = "<div class=\"e-model e-section unit-33\" draggable=\"true\" v-on=\"dragstart: onDragStart\">Section</div>";
+module.exports = {
+    replace: true,
+    data: function () {
+      return {
+        model: 'Section'
+      }
+    },
+    methods: {
+      onDragStart: function (event) {
+        this.$dispatch('editables:sidebar:drag-item', this.model);
+      }
+    }
+  }
+module.exports.template = __vue_template__;
+
+},{}],72:[function(require,module,exports){
 var __vue_template__ = "<section id=\"editables-preview\" v-on=\"drop: onDrop, dragenter: onDragEnter, dragover: onDragOver, dragleave: onDragLeave\"></section>";
 module.exports = {
     replace: true,
     inherit: true,
     data: function () {
       return {
-        elements: [],
-        foo: 'bar'
+        elements: []
       }
     },
     methods: {
-      onDrop: function (event) {
-        this.$el.classList.remove('droppable');
-
-        var container = new this.$root.models.Container();
-        container.$appendTo(this.$el);
-        this.elements.push(container);
-      },
       onDragOver: function (event) {
         event.preventDefault();
       },
@@ -7916,20 +7990,36 @@ module.exports = {
       },
       onDragLeave: function (event) {
         this.$el.classList.remove('droppable');
-      }
-    },
-    components: {}
-  }
-module.exports.template = __vue_template__;
+      },
+      onDrop: function (event) {
+        this.$el.classList.remove('droppable');
 
-},{}],67:[function(require,module,exports){
-var __vue_template__ = "<aside id=\"editables-sidebar\">\n    <header>\n      <h2>Editables</h2>\n    </header>\n    <hr>\n    <div id=\"containers\" class=\"units-row\">\n      <div-view></div-view>\n    </div>\n  </aside>";
-module.exports = {
-    replace: true,
-    components: {
-      'div-view': require('./containers/div-view.vue')
+        if (this.currentDraggedModel !== null) {
+          if (this.currentDraggedModel in this.models) {
+            var element = this.$addChild({}, this.models[this.currentDraggedModel]);
+            element.$appendTo(this.$el);
+            this.elements.push(element);
+
+            this.currentDraggedModel = null;
+          } else {
+            console.warn('Unregistred or unsupported model', this.currentDraggedModel);
+          }
+        }
+      }
     }
   }
 module.exports.template = __vue_template__;
 
-},{"./containers/div-view.vue":65}]},{},[64]);
+},{}],73:[function(require,module,exports){
+var __vue_template__ = "<aside id=\"editables-sidebar\">\n    <header>\n      <h2>Editables</h2>\n    </header>\n    <hr>\n    <div id=\"containers\" class=\"units-row\">\n      <model-div></model-div>\n      <model-section></model-section>\n      <model-row></model-row>\n    </div>\n  </aside>";
+module.exports = {
+    replace: true,
+    components: {
+      'model-div': require('./models/model-div.vue'),
+      'model-section': require('./models/model-section.vue'),
+      'model-row': require('./models/model-row.vue'),
+    }
+  }
+module.exports.template = __vue_template__;
+
+},{"./models/model-div.vue":69,"./models/model-row.vue":70,"./models/model-section.vue":71}]},{},[68]);

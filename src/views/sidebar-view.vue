@@ -5,7 +5,9 @@
     </header>
     <hr />
     <div id='containers' class='units-row'>
-      <div-view></div-view>
+      <model-div></model-div>
+      <model-section></model-section>
+      <model-row></model-row>
     </div>
   </aside>
 </template>
@@ -14,7 +16,9 @@
   module.exports = {
     replace: true,
     components: {
-      'div-view': require('./containers/div-view.vue')
+      'model-div': require('./models/model-div.vue'),
+      'model-section': require('./models/model-section.vue'),
+      'model-row': require('./models/model-row.vue'),
     }
   }
 </script>

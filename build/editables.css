@@ -2620,13 +2620,19 @@ html body #editables .e-model {
   background: #dde7f1;
 }
 #editables-preview-container #editables-preview .e-element {
+  min-height: 40px;
+  padding: 10px;
   border: 1px solid #dedede;
   margin-bottom: 5px;
-  min-height: 40px;
 }
 #editables-preview-container #editables-preview .e-element.droppable {
   transition: background 0.11s ease-in-out;
   background: #dde7f1;
+}
+#editables-preview-container #editables-preview .e-element.units-row .col {
+  min-height: 40px;
+  text-align: center;
+  border: 1px solid #dedede;
 }
 
 #editables-sidebar {
@@ -2645,10 +2651,10 @@ html body #editables .e-model {
   color: inherit;
 }
 #editables-sidebar .e-model {
-  background: #d7d9da;
-  border: 1px solid #c2c5c6;
-}
-
-html body .e-div {
   height: 50px;
+  line-height: 50px;
+  text-align: center;
+  background: #d7d9da;
+  color: #1f242a;
+  border: 3px solid #c2c5c6;
 }

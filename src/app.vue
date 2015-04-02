@@ -9,19 +9,24 @@
 </template>
 
 <script>
+  var Vue = require('vue');
+  var Container = Vue.extend(require('./components/containers/container.js'));
+
   module.exports = {
     el: '#editables',
     events: {
-      'editables:sidebar:drag-item': function (item) {
-        this.currentDraggedItem = item;
+      'editables:sidebar:drag-item': function (model) {
+        this.currentDraggedModel = model;
       }
     },
     data: function () {
       return {
+        currentDraggedModel: null,
         models: {
-          Container: null,
-        },
-        currentDraggedItem: null
+          Div: Container.extend(require('./components/containers/div.js')),
+          Section: Container.extend(require('./components/containers/section.js')),
+          Row: Container.extend(require('./components/containers/row.js'))
+        }
       }
     },
     components: {

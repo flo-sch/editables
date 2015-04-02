@@ -1,5 +1,5 @@
 <template>
-  <div class='e-model e-div unit-33' draggable='true' v-on='dragstart: onDragStart'></div>
+  <div class='e-model e-row unit-33' draggable='true' v-on='dragstart: onDragStart'>Row</div>
 </template>
 
 <script>
@@ -7,12 +7,13 @@
     replace: true,
     data: function () {
       return {
-        isModel: true
+        isModel: true,
+        model: 'Row'
       }
     },
     methods: {
       onDragStart: function (event) {
-        this.$dispatch('editables:sidebar:drag-item', this);
+        this.$dispatch('editables:sidebar:drag-item', this.model);
       }
     }
   }
