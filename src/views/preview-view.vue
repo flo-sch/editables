@@ -8,20 +8,17 @@
     inherit: true,
     data: function () {
       return {
-        elements: []
+        elements: [],
+        foo: 'bar'
       }
     },
     methods: {
       onDrop: function (event) {
         this.$el.classList.remove('droppable');
 
-        if (this.currentDraggedItem) {
-          var clone = this.currentDraggedItem.$el.cloneNode(true);
-          clone.classList.remove('e-model')
-          clone.classList.add('e-element');
-          this.$el.appendChild(clone);
-          this.currentDraggedItem = null;
-        }
+        var container = new this.$root.models.Container();
+        container.$appendTo(this.$el);
+        this.elements.push(container);
       },
       onDragOver: function (event) {
         event.preventDefault();

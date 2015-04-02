@@ -28,6 +28,11 @@
     .e-element {
       border: 1px solid rgb(222, 222, 222);
       margin-bottom: 5px;
+      min-height: 40px;
+      &.droppable {
+        transition: background 0.11s ease-in-out;
+        background: rgb(221, 231, 241);
+      }
     }
   }
 }

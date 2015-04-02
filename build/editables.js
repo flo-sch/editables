@@ -7818,6 +7818,9 @@ module.exports = {
     },
     data: function () {
       return {
+        models: {
+          Container: null,
+        },
         currentDraggedItem: null
       }
     },
@@ -7834,7 +7837,41 @@ module.exports.template = __vue_template__;
  */
 
 var Vue = require('vue');
-new Vue(require('./app.vue'));
+var app = new Vue(require('./app.vue'));
+app.models.Container = Vue.extend({
+  inherit: true,
+  el: function () {
+    var el = document.createElement('div');
+    el.classList.add('e-element');
+    el.setAttribute('draggable', true);
+    el.setAttribute('v-on', 'dragenter: onDragEnter, dragleave: onDragLeave, drop: onDrop');
+    return el;
+  },
+  data: function () {
+    return {
+      elements: []
+    }
+  },
+  methods: {
+    onDragOver: function (event) {
+      event.preventDefault();
+    },
+    onDragEnter: function (event) {
+      this.$el.classList.add('droppable');
+    },
+    onDragLeave: function (event) {
+      this.$el.classList.remove('droppable');
+    },
+    onDrop: function (event) {
+      this.$el.classList.remove('droppable');
+
+      console.log('drop', event, this.$data);
+      event.stopPropagation();
+
+      // this.elements[].push()
+    }
+  }
+});
 },{"./app.vue":63,"vue":61}],65:[function(require,module,exports){
 var __vue_template__ = "<div class=\"e-model e-div unit-33\" draggable=\"true\" v-on=\"dragstart: onDragStart\"></div>";
 module.exports = {
@@ -7859,20 +7896,17 @@ module.exports = {
     inherit: true,
     data: function () {
       return {
-        elements: []
+        elements: [],
+        foo: 'bar'
       }
     },
     methods: {
       onDrop: function (event) {
         this.$el.classList.remove('droppable');
 
-        if (this.currentDraggedItem) {
-          var clone = this.currentDraggedItem.$el.cloneNode(true);
-          clone.classList.remove('e-model')
-          clone.classList.add('e-element');
-          this.$el.appendChild(clone);
-          this.currentDraggedItem = null;
-        }
+        var container = new this.$root.models.Container();
+        container.$appendTo(this.$el);
+        this.elements.push(container);
       },
       onDragOver: function (event) {
         event.preventDefault();

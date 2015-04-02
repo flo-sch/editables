@@ -18,6 +18,9 @@
     },
     data: function () {
       return {
+        models: {
+          Container: null,
+        },
         currentDraggedItem: null
       }
     },

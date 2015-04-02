@@ -2622,6 +2622,11 @@ html body #editables .e-model {
 #editables-preview-container #editables-preview .e-element {
   border: 1px solid #dedede;
   margin-bottom: 5px;
+  min-height: 40px;
+}
+#editables-preview-container #editables-preview .e-element.droppable {
+  transition: background 0.11s ease-in-out;
+  background: #dde7f1;
 }
 
 #editables-sidebar {
