@@ -18,8 +18,6 @@ module.exports = {
     onDrop: function (event) {
       this.$el.classList.remove('droppable');
 
-      console.log('drop', event, this, this.currentDraggedModel);
-
       if (this.currentDraggedModel !== null) {
         if (this.currentDraggedModel in this.models) {
           var element = this.$addChild({}, this.models[this.currentDraggedModel]);
