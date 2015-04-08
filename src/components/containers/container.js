@@ -2,6 +2,7 @@ module.exports = {
   inherit: true,
   data: function () {
     return {
+      dragOverCount: 0,
       elements: []
     }
   },
@@ -10,12 +11,19 @@ module.exports = {
       event.preventDefault();
     },
     onDragEnter: function (event) {
+      console.log('enter', this.dragOverCount, this.$el);
+      this.dragOverCount++;
       this.$el.classList.add('droppable');
     },
     onDragLeave: function (event) {
-      this.$el.classList.remove('droppable');
+      console.log('leave', this.dragOverCount, this.$el);
+      this.dragOverCount--;
+      // if (this.dragOverCount === 0) {
+        this.$el.classList.remove('droppable');
+      // }
     },
     onDrop: function (event) {
+      this.dragOverCount = 0;
       this.$el.classList.remove('droppable');
 
       if (this.currentDraggedModel !== null) {
