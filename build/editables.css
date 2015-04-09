@@ -2613,7 +2613,7 @@ html body #editables .e-model {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   background: #f7f7f1;
-  transition: background 0.11s ease-in-out;
+  transition: all 0.11s ease-in-out;
   overflow: auto;
 }
 #editables-preview-container #editables-preview.droppable {
@@ -2633,6 +2633,9 @@ html body #editables .e-model {
   min-height: 40px;
   text-align: center;
   border: 1px solid #dedede;
+}
+#editables-preview-container #editables-preview .e-element:hover, #editables-preview-container #editables-preview .e-element:active, #editables-preview-container #editables-preview .e-element:focus {
+  border: 1px solid #7979de;
 }
 
 #editables-sidebar {

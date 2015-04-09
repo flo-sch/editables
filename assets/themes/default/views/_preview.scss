@@ -20,7 +20,7 @@
     height: 100%;
     box-sizing: border-box;
     background: rgb(247, 247, 241);
-    transition: background 0.11s ease-in-out;
+    transition: all 0.11s ease-in-out;
     overflow: auto;
     &.droppable {
       background: rgb(221, 231, 241);
@@ -40,6 +40,11 @@
           text-align: center;
           border: 1px solid rgb(222, 222, 222);
         }
+      }
+      &:hover,
+      &:active,
+      &:focus {
+        border: 1px solid rgb(121, 121, 222);
       }
     }
   }

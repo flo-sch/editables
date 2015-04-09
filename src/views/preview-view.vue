@@ -34,6 +34,17 @@
           } else {
             console.warn('Unregistred or unsupported model', this.currentDraggedModel);
           }
+        } else if (this.currentDraggedElement !== null) {
+          try {
+            this.currentDraggedElement.$appendTo(this.$el);
+          }
+          catch (DOMexception) {
+            console.warn('It is impossible to move a container inside its own content.');
+            // TODO
+            // Display visual feedback about this problem
+          }
+
+          this.currentDraggedElement = null;
         }
       }
     }

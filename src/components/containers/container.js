@@ -1,26 +1,23 @@
 module.exports = {
   inherit: true,
-  data: function () {
-    return {
-      dragOverCount: 0,
-      elements: []
-    }
-  },
   methods: {
+    onDragStart: function (event) {
+      this.currentDraggedElement = this;
+
+      event.stopPropagation();
+    },
     onDragOver: function (event) {
       event.preventDefault();
     },
     onDragEnter: function (event) {
-      console.log('enter', this.dragOverCount, this.$el);
-      this.dragOverCount++;
       this.$el.classList.add('droppable');
+
+      event.stopPropagation();
     },
     onDragLeave: function (event) {
-      console.log('leave', this.dragOverCount, this.$el);
-      this.dragOverCount--;
-      // if (this.dragOverCount === 0) {
-        this.$el.classList.remove('droppable');
-      // }
+      this.$el.classList.remove('droppable');
+
+      event.stopPropagation();
     },
     onDrop: function (event) {
       this.dragOverCount = 0;
@@ -30,12 +27,22 @@ module.exports = {
         if (this.currentDraggedModel in this.models) {
           var element = this.$addChild({}, this.models[this.currentDraggedModel]);
           element.$appendTo(this.$el);
-          this.elements.push(element);
 
           this.currentDraggedModel = null;
         } else {
           console.warn('Unregistred or unsupported model', this.currentDraggedModel);
         }
+      } else if (this.currentDraggedElement !== null) {
+        try {
+          this.currentDraggedElement.$appendTo(this.$el);
+        }
+        catch (DOMexception) {
+          console.warn('It is impossible to move a container inside its own content.');
+          // TODO
+          // Display visual feedback about this problem
+        }
+
+        this.currentDraggedElement = null;
       }
 
       event.stopPropagation();
