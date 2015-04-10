@@ -4,11 +4,14 @@
 </template>
 
 <script>
+  var Vue = require('vue');
+  var Container = Vue.extend(require('../container.vue'));
+
   module.exports = {
     inherit: true,
     replace: true,
     components: {
-      'content-editable': require('../editable.vue')
+      'content-editable': Container.extend(require('../editable.vue'))
     }
   }
 </script>

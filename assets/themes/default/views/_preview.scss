@@ -30,9 +30,13 @@
       padding: 10px;
       border: 1px solid rgb(222, 222, 222);
       margin-bottom: 5px;
+      transition: background 0.11s ease-in-out;
       &.droppable {
-        transition: background 0.11s ease-in-out;
         background: rgb(221, 231, 241);
+      }
+      &.undroppable {
+        background: rgb(234, 234, 234);
+        border-color: rgb(244, 168, 168);
       }
       &.units-row {
         .col {
@@ -45,6 +49,12 @@
       &:active,
       &:focus {
         border: 1px solid rgb(121, 121, 222);
+      }
+      &.sticky {
+        background: rgb(214, 214, 214);
+      }
+      &.edit {
+        background: rgb(250, 250, 250);
       }
     }
   }

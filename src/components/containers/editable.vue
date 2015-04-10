@@ -1,5 +1,5 @@
 <template>
-  <div class='e-element e-div-editable droppable' contenteditable='false' v-on='click: onClick, dblclick: onDoubleClick'>
+  <div class='e-element e-div-editable droppable' contenteditable='false' v-on='click: onClick, dblclick: onDoubleClick, dragenter: onDragEnter, dragleave: onDragLeave, drop: onDrop'>
     <p>Lorem ipsum Sit incididunt quis officia officia consequat et minim enim Excepteur consequat incididunt quis sunt exercitation veniam ad culpa nisi eu enim culpa id adipisicing elit in ut in enim culpa dolor labore sunt dolore.</p>
   </div>
 </template>
@@ -25,6 +25,10 @@
     events: {
       'editables:window:click': function (event) {
         this.isEdited = false;
+        this.$dispatch('editables:editable:unedit', this);
+      },
+      'editables:editable:edit': function (vm) {
+        this.isEdited = (vm === this);
       }
     },
     methods: {
@@ -39,9 +43,9 @@
         this.$el.blur();
       },
       onClick: function (event) {
-        this.isEdited = true;
-
         event.stopPropagation();
+
+        this.$dispatch('editables:editable:edit', this);
       },
       onDoubleClick: function (event) {
         event.stopPropagation();
