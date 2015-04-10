@@ -3,8 +3,10 @@
     inherit: true,
     methods: {
       onDragStart: function (event) {
-        this.currentDraggedElement = this;
-
+        if (this.isDraggable) {
+          this.currentDraggedElement = this;
+        }
+        
         event.stopPropagation();
       },
       onDragOver: function (event) {
