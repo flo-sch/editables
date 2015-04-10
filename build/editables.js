@@ -7901,7 +7901,7 @@ module.exports = {
 module.exports.template = __vue_template__;
 
 },{"../editable.vue":69}],67:[function(require,module,exports){
-var __vue_template__ = "<content-editable class=\"e-element unit-50\">Col</content-editable>\n  <content-editable class=\"e-element unit-50\">Col</content-editable>";
+var __vue_template__ = "<content-editable class=\"e-element e-col unit-50\">Col</content-editable>\n  <content-editable class=\"e-element e-col unit-50\">Col</content-editable>";
 var Vue = require('vue');
   var Container = Vue.extend(require('../container.vue'));
 

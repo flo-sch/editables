@@ -2626,6 +2626,12 @@ html body #editables .e-model {
   margin-bottom: 5px;
   transition: background 0.11s ease-in-out;
 }
+#editables-preview-container #editables-preview .e-element.e-section {
+  border-width: 2px;
+}
+#editables-preview-container #editables-preview .e-element.e-col {
+  border-style: dashed;
+}
 #editables-preview-container #editables-preview .e-element.droppable {
   background: #dde7f1;
 }
@@ -2636,16 +2642,16 @@ html body #editables .e-model {
 #editables-preview-container #editables-preview .e-element.units-row .col {
   min-height: 40px;
   text-align: center;
-  border: 1px solid #dedede;
-}
-#editables-preview-container #editables-preview .e-element:hover, #editables-preview-container #editables-preview .e-element:active, #editables-preview-container #editables-preview .e-element:focus {
-  border: 1px solid #7979de;
+  border: 1px dashed #dedede;
 }
 #editables-preview-container #editables-preview .e-element.sticky {
   background: #d6d6d6;
 }
 #editables-preview-container #editables-preview .e-element.edit {
   background: #fafafa;
+}
+#editables-preview-container #editables-preview .e-element:hover, #editables-preview-container #editables-preview .e-element:active, #editables-preview-container #editables-preview .e-element:focus {
+  border-color: #7979de;
 }
 
 #editables-sidebar {

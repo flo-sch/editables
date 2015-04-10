@@ -1,6 +1,6 @@
 <template>
-  <content-editable class="e-element unit-50">Col</content-editable>
-  <content-editable class="e-element unit-50">Col</content-editable>
+  <content-editable class="e-element e-col unit-50">Col</content-editable>
+  <content-editable class="e-element e-col unit-50">Col</content-editable>
 </template>
 
 <script>
