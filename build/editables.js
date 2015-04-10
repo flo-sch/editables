@@ -7973,7 +7973,7 @@ module.exports = {
   }
 
 },{}],69:[function(require,module,exports){
-var __vue_template__ = "<div class=\"e-element e-div-editable droppable\" contenteditable=\"false\" draggable=\"{{ isDraggable }}\" v-on=\"click: onClick, dblclick: onDoubleClick, dragstart: onDragStart, dragenter: onDragEnter, dragleave: onDragLeave, drop: onDrop\">\n    <p>Lorem ipsum Sit incididunt quis officia officia consequat et minim enim Excepteur consequat incididunt quis sunt exercitation veniam ad culpa nisi eu enim culpa id adipisicing elit in ut in enim culpa dolor labore sunt dolore.</p>\n  </div>";
+var __vue_template__ = "<div class=\"e-element e-div-editable droppable\" contenteditable=\"false\" draggable=\"{{ isDraggable }}\" v-on=\"click: onClick, dblclick: onDoubleClick, dragstart: onDragStart, dragenter: onDragEnter, dragleave: onDragLeave, drop: onDrop\">Lorem ipsum Sit incididunt quis officia officia consequat et minim enim Excepteur consequat incididunt quis sunt exercitation veniam ad culpa nisi eu enim culpa id adipisicing elit in ut in enim culpa dolor labore sunt dolore.</div>";
 module.exports = {
     replace: true,
     inherit: true,
