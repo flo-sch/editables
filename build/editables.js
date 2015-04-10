@@ -7811,6 +7811,7 @@ module.exports = Watcher
 var __vue_template__ = "<editables-sidebar></editables-sidebar>\n  <section id=\"editables-preview-container\">\n    <header id=\"editables-preview-header\">\n      <h2>Content</h2>\n    </header>\n    <editables-preview></editables-preview>\n  </section>";
 var Vue = require('vue');
   var Container = Vue.extend(require('./components/containers/container.vue'));
+  var Editable = Container.extend(require('./components/containers/editable.vue'));
 
   module.exports = {
     el: '#editables',
@@ -7827,7 +7828,7 @@ var Vue = require('vue');
         currentDraggedModel: null,
         currentDraggedElement: null,
         models: {
-          Div: Container.extend(require('./components/containers/blocks/div.vue')),
+          Div: Editable.extend(require('./components/containers/blocks/div.vue')),
           Section: Container.extend(require('./components/containers/blocks/section.vue')),
           Row: Container.extend(require('./components/containers/row.vue'))
         }
@@ -7847,11 +7848,11 @@ var Vue = require('vue');
   }
 module.exports.template = __vue_template__;
 
-},{"./components/containers/blocks/div.vue":64,"./components/containers/blocks/section.vue":65,"./components/containers/container.vue":68,"./components/containers/row.vue":70,"./views/preview-view.vue":75,"./views/sidebar-view.vue":76,"vue":61}],64:[function(require,module,exports){
+},{"./components/containers/blocks/div.vue":64,"./components/containers/blocks/section.vue":65,"./components/containers/container.vue":68,"./components/containers/editable.vue":69,"./components/containers/row.vue":70,"./views/preview-view.vue":75,"./views/sidebar-view.vue":76,"vue":61}],64:[function(require,module,exports){
 module.exports = {
     data: function () {
       return {
-        dragOverCount: 0
+        isDraggable: true
       }
     },
     el: function () {
@@ -7859,7 +7860,7 @@ module.exports = {
       el.classList.add('e-element');
       el.classList.add('e-div');
       el.setAttribute('draggable', true);
-      el.setAttribute('v-on', 'dragstart: onDragStart, dragenter: onDragEnter, dragleave: onDragLeave, drop: onDrop');
+      el.setAttribute('v-on', 'dragstart: onDragStart, dragenter: onDragEnter, dragleave: onDragLeave, drop: onDrop, click: onClick');
 
       return el;
     }
@@ -7869,7 +7870,7 @@ module.exports = {
 module.exports = {
     data: function () {
       return {
-        dragOverCount: 0
+        isDraggable: true
       }
     },
     el: function () {
@@ -7888,6 +7889,11 @@ var __vue_template__ = "<content-editable class=\"e-element unit-33\">Col</conte
 module.exports = {
     inherit: true,
     replace: true,
+    data: function () {
+      return {
+        isDraggable: false
+      }
+    },
     components: {
     	'content-editable': require('../editable.vue')
     }
@@ -7902,6 +7908,11 @@ var Vue = require('vue');
   module.exports = {
     inherit: true,
     replace: true,
+    data: function () {
+    	return {
+    		isDraggable: false
+    	}
+    },
     components: {
       'content-editable': Container.extend(require('../editable.vue'))
     }
@@ -7962,7 +7973,7 @@ module.exports = {
   }
 
 },{}],69:[function(require,module,exports){
-var __vue_template__ = "<div class=\"e-element e-div-editable droppable\" contenteditable=\"false\" v-on=\"click: onClick, dblclick: onDoubleClick, dragenter: onDragEnter, dragleave: onDragLeave, drop: onDrop\">\n    <p>Lorem ipsum Sit incididunt quis officia officia consequat et minim enim Excepteur consequat incididunt quis sunt exercitation veniam ad culpa nisi eu enim culpa id adipisicing elit in ut in enim culpa dolor labore sunt dolore.</p>\n  </div>";
+var __vue_template__ = "<div class=\"e-element e-div-editable droppable\" contenteditable=\"false\" draggable=\"{{ isDraggable }}\" v-on=\"click: onClick, dblclick: onDoubleClick, dragstart: onDragStart, dragenter: onDragEnter, dragleave: onDragLeave, drop: onDrop\">\n    <p>Lorem ipsum Sit incididunt quis officia officia consequat et minim enim Excepteur consequat incididunt quis sunt exercitation veniam ad culpa nisi eu enim culpa id adipisicing elit in ut in enim culpa dolor labore sunt dolore.</p>\n  </div>";
 module.exports = {
     replace: true,
     inherit: true,
@@ -7994,16 +8005,26 @@ module.exports = {
         this.$el.setAttribute('contenteditable', true);
         this.$el.classList.add('edit');
         this.$el.focus();
+
+        if (this.isDraggable) {
+          this.$el.setAttribute('draggable', false);
+        }
       },
       unedit: function () {
         this.$el.setAttribute('contenteditable', false);
         this.$el.classList.remove('edit');
         this.$el.blur();
+
+        if (this.isDraggable) {
+          console.log('reset draggable', this.$el);
+          this.$el.setAttribute('draggable', true);
+        }
       },
       onClick: function (event) {
         event.stopPropagation();
 
         this.$dispatch('editables:editable:edit', this);
+        this.isEdited = true;
       },
       onDoubleClick: function (event) {
         event.stopPropagation();

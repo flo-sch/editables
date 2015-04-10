@@ -11,6 +11,7 @@
 <script>
   var Vue = require('vue');
   var Container = Vue.extend(require('./components/containers/container.vue'));
+  var Editable = Container.extend(require('./components/containers/editable.vue'));
 
   module.exports = {
     el: '#editables',
@@ -27,7 +28,7 @@
         currentDraggedModel: null,
         currentDraggedElement: null,
         models: {
-          Div: Container.extend(require('./components/containers/blocks/div.vue')),
+          Div: Editable.extend(require('./components/containers/blocks/div.vue')),
           Section: Container.extend(require('./components/containers/blocks/section.vue')),
           Row: Container.extend(require('./components/containers/row.vue'))
         }

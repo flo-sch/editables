@@ -2,7 +2,7 @@
   module.exports = {
     data: function () {
       return {
-        dragOverCount: 0
+        isDraggable: true
       }
     },
     el: function () {

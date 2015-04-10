@@ -8,6 +8,11 @@
   module.exports = {
     inherit: true,
     replace: true,
+    data: function () {
+      return {
+        isDraggable: false
+      }
+    },
     components: {
     	'content-editable': require('../editable.vue')
     }

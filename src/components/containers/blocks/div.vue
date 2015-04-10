@@ -2,7 +2,7 @@
   module.exports = {
     data: function () {
       return {
-        dragOverCount: 0
+        isDraggable: true
       }
     },
     el: function () {
@@ -10,7 +10,7 @@
       el.classList.add('e-element');
       el.classList.add('e-div');
       el.setAttribute('draggable', true);
-      el.setAttribute('v-on', 'dragstart: onDragStart, dragenter: onDragEnter, dragleave: onDragLeave, drop: onDrop');
+      el.setAttribute('v-on', 'dragstart: onDragStart, dragenter: onDragEnter, dragleave: onDragLeave, drop: onDrop, click: onClick');
 
       return el;
     }
