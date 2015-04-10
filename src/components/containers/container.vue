@@ -23,7 +23,6 @@
         event.stopPropagation();
       },
       onDrop: function (event) {
-        this.dragOverCount = 0;
         this.$el.classList.remove('droppable');
 
         if (this.currentDraggedModel !== null) {

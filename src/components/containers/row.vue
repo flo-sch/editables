@@ -18,6 +18,7 @@
   module.exports = {
     data: function () {
       return {
+        isDraggable: true,
         onContext: false,
         columns: 'col-50',
         content: []

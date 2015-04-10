@@ -1,5 +1,5 @@
 <template>
-  <div class='e-model e-row unit-33' draggable='true' v-on='dragstart: onDragStart'>Row</div>
+  <div class='e-model e-p unit-33' draggable='true' v-on='dragstart: onDragStart'>P</div>
 </template>
 
 <script>
@@ -7,7 +7,7 @@
     replace: true,
     data: function () {
       return {
-        model: 'Row'
+        model: 'P'
       }
     },
     methods: {

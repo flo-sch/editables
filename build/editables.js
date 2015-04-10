@@ -7808,7 +7808,7 @@ function traverse (obj) {
 
 module.exports = Watcher
 },{"./batcher":7,"./config":11,"./observer":44,"./parsers/expression":47,"./util":58}],63:[function(require,module,exports){
-var __vue_template__ = "<editables-sidebar></editables-sidebar>\n  <section id=\"editables-preview-container\">\n    <header id=\"editables-preview-header\">\n      <h2>Content</h2>\n    </header>\n    <editables-preview></editables-preview>\n  </section>";
+var __vue_template__ = "<editables-sidebar></editables-sidebar>\n  <section id=\"editables-preview-container\">\n    <header id=\"editables-preview-header\">\n      <h2>Content</h2>\n    </header>\n    <editables-preview v-ref=\"Preview\"></editables-preview>\n  </section>";
 var Vue = require('vue');
   var Container = Vue.extend(require('./components/containers/container.vue'));
   var Editable = Container.extend(require('./components/containers/editable.vue'));
@@ -7830,7 +7830,9 @@ var Vue = require('vue');
         models: {
           Div: Editable.extend(require('./components/containers/blocks/div.vue')),
           Section: Container.extend(require('./components/containers/blocks/section.vue')),
-          Row: Container.extend(require('./components/containers/row.vue'))
+          Row: Container.extend(require('./components/containers/row.vue')),
+          P: Editable.extend(require('./components/containers/blocks/p.vue')),
+          H1: Editable.extend(require('./components/containers/blocks/h1.vue'))
         }
       }
     },
@@ -7844,11 +7846,16 @@ var Vue = require('vue');
     components: {
       'editables-sidebar': require('./views/sidebar-view.vue'),
       'editables-preview': require('./views/preview-view.vue')
+    },
+    methods: {
+      getContent: function () {
+        return this.$.Preview.$el.innerHTML;
+      }
     }
   }
 module.exports.template = __vue_template__;
 
-},{"./components/containers/blocks/div.vue":64,"./components/containers/blocks/section.vue":65,"./components/containers/container.vue":69,"./components/containers/editable.vue":70,"./components/containers/row.vue":71,"./views/preview-view.vue":76,"./views/sidebar-view.vue":77,"vue":61}],64:[function(require,module,exports){
+},{"./components/containers/blocks/div.vue":64,"./components/containers/blocks/h1.vue":65,"./components/containers/blocks/p.vue":66,"./components/containers/blocks/section.vue":67,"./components/containers/container.vue":71,"./components/containers/editable.vue":72,"./components/containers/row.vue":73,"./views/preview-view.vue":80,"./views/sidebar-view.vue":81,"vue":61}],64:[function(require,module,exports){
 module.exports = {
     data: function () {
       return {
@@ -7867,6 +7874,46 @@ module.exports = {
   }
 
 },{}],65:[function(require,module,exports){
+var __vue_template__ = "<h1 class=\"e-element e-h1 droppable\" contenteditable=\"false\" draggable=\"{{ isDraggable }}\" v-on=\"click: onClick, dblclick: onDoubleClick, dragstart: onDragStart, dragenter: onDragEnter, dragleave: onDragLeave, drop: onDrop, contextmenu: lock\">TITLE</h1>";
+module.exports = {
+    data: function () {
+      return {
+        isDraggable: true
+      }
+    },
+    el: function () {
+      var el = document.createElement('h1');
+      el.classList.add('e-element');
+      el.classList.add('e-h1');
+      el.setAttribute('draggable', true);
+      el.setAttribute('v-on', 'dragstart: onDragStart, dragenter: onDragEnter, dragleave: onDragLeave, drop: onDrop, click: onClick');
+
+      return el;
+    }
+  }
+module.exports.template = __vue_template__;
+
+},{}],66:[function(require,module,exports){
+var __vue_template__ = "<p class=\"e-element e-p droppable\" contenteditable=\"false\" draggable=\"{{ isDraggable }}\" v-on=\"click: onClick, dblclick: onDoubleClick, dragstart: onDragStart, dragenter: onDragEnter, dragleave: onDragLeave, drop: onDrop, contextmenu: lock\">Lorem ipsum Dolor non nisi eiusmod nostrud culpa esse est irure ex magna occaecat non qui veniam ut nulla amet eiusmod qui non in dolore amet dolor Excepteur deserunt voluptate non officia occaecat esse in nulla ullamco voluptate laboris id officia commodo commodo ex aliquip Duis in consectetur fugiat dolor commodo sed dolore laborum in Duis sit pariatur aliqua est fugiat do est commodo Duis ut dolore incididunt aliquip ex ex anim enim est id est pariatur cupidatat pariatur consectetur reprehenderit dolor sit irure Excepteur ullamco reprehenderit sunt enim cupidatat nulla aute non eu enim anim consequat ea reprehenderit dolore ex eu eiusmod officia ea amet do incididunt sed pariatur in magna cupidatat tempor ea eu et cillum sed eu consequat quis proident esse magna ut quis deserunt id magna elit Ut sunt consequat irure in consectetur irure nostrud irure culpa et occaecat consequat commodo aliquip deserunt aute in ut cillum labore magna est cillum aliquip ad laborum qui minim mollit fugiat est anim enim esse cupidatat ut irure dolor nulla qui exercitation id incididunt amet non voluptate veniam aliquip dolore nisi irure do irure sint consectetur ullamco voluptate eiusmod consectetur occaecat qui minim nostrud velit ut veniam ex do tempor sunt enim qui ut laboris incididunt non nulla quis sint eu in quis adipisicing sint quis consequat aliqua officia amet.</p>";
+module.exports = {
+    data: function () {
+      return {
+        isDraggable: true
+      }
+    },
+    el: function () {
+      var el = document.createElement('p');
+      el.classList.add('e-element');
+      el.classList.add('e-p');
+      el.setAttribute('draggable', true);
+      el.setAttribute('v-on', 'dragstart: onDragStart, dragenter: onDragEnter, dragleave: onDragLeave, drop: onDrop, click: onClick');
+
+      return el;
+    }
+  }
+module.exports.template = __vue_template__;
+
+},{}],67:[function(require,module,exports){
 module.exports = {
     data: function () {
       return {
@@ -7884,7 +7931,7 @@ module.exports = {
     }
   }
 
-},{}],66:[function(require,module,exports){
+},{}],68:[function(require,module,exports){
 var __vue_template__ = "<content-editable class=\"e-element e-col unit-25\">Col</content-editable>\n  <content-editable class=\"e-element e-col unit-25\">Col</content-editable>\n  <content-editable class=\"e-element e-col unit-25\">Col</content-editable>\n  <content-editable class=\"e-element e-col unit-25\">Col</content-editable>";
 var Vue = require('vue');
   var Container = Vue.extend(require('../container.vue'));
@@ -7903,7 +7950,7 @@ var Vue = require('vue');
   }
 module.exports.template = __vue_template__;
 
-},{"../container.vue":69,"../editable.vue":70,"vue":61}],67:[function(require,module,exports){
+},{"../container.vue":71,"../editable.vue":72,"vue":61}],69:[function(require,module,exports){
 var __vue_template__ = "<content-editable class=\"e-element e-col unit-33\">Col</content-editable>\n  <content-editable class=\"e-element e-col unit-33\">Col</content-editable>\n  <content-editable class=\"e-element e-col unit-33\">Col</content-editable>";
 var Vue = require('vue');
   var Container = Vue.extend(require('../container.vue'));
@@ -7922,7 +7969,7 @@ var Vue = require('vue');
   }
 module.exports.template = __vue_template__;
 
-},{"../container.vue":69,"../editable.vue":70,"vue":61}],68:[function(require,module,exports){
+},{"../container.vue":71,"../editable.vue":72,"vue":61}],70:[function(require,module,exports){
 var __vue_template__ = "<content-editable class=\"e-element e-col unit-50\" draggable=\"false\">Col</content-editable>\n  <content-editable class=\"e-element e-col unit-50\" draggable=\"false\">Col</content-editable>";
 var Vue = require('vue');
   var Container = Vue.extend(require('../container.vue'));
@@ -7941,7 +7988,7 @@ var Vue = require('vue');
   }
 module.exports.template = __vue_template__;
 
-},{"../container.vue":69,"../editable.vue":70,"vue":61}],69:[function(require,module,exports){
+},{"../container.vue":71,"../editable.vue":72,"vue":61}],71:[function(require,module,exports){
 module.exports = {
     inherit: true,
     methods: {
@@ -7966,7 +8013,6 @@ module.exports = {
         event.stopPropagation();
       },
       onDrop: function (event) {
-        this.dragOverCount = 0;
         this.$el.classList.remove('droppable');
 
         if (this.currentDraggedModel !== null) {
@@ -7996,8 +8042,8 @@ module.exports = {
     }
   }
 
-},{}],70:[function(require,module,exports){
-var __vue_template__ = "<div class=\"e-element e-div-editable droppable\" contenteditable=\"false\" draggable=\"{{ isDraggable }}\" v-on=\"click: onClick, dblclick: onDoubleClick, dragstart: onDragStart, dragenter: onDragEnter, dragleave: onDragLeave, drop: onDrop, contextmenu: lock\">Lorem ipsum Sit incididunt quis officia officia consequat et minim enim Excepteur consequat incididunt quis sunt exercitation veniam ad culpa nisi eu enim culpa id adipisicing elit in ut in enim culpa dolor labore sunt dolore.</div>";
+},{}],72:[function(require,module,exports){
+var __vue_template__ = "<div class=\"e-element e-div-editable droppable\" contenteditable=\"false\" draggable=\"{{ isDraggable }}\" v-on=\"click: onClick, dblclick: onDoubleClick, dragstart: onDragStart, dragenter: onDragEnter, dragleave: onDragLeave, drop: onDrop, contextmenu: lock\">Lorem ipsum Consectetur non qui nulla officia.</div>";
 module.exports = {
     replace: true,
     inherit: true,
@@ -8061,7 +8107,7 @@ module.exports = {
   }
 module.exports.template = __vue_template__;
 
-},{}],71:[function(require,module,exports){
+},{}],73:[function(require,module,exports){
 var __vue_template__ = "<div v-component=\"{{ columns }}\"></div>\n  <div class=\"e-contextual\" v-if=\"onContext\" v-on=\"contextmenu: lock\">\n    <h5 class=\"e-contextual-title\">MENU</h5>\n    <hr class=\"e-contextual-divider\">\n    <div class=\"e-contextual-links\">\n      <a href=\"#\" data-component=\"col-50\" v-on=\"click: onTemplateSelected\" class=\"e-contextual-link\" v-class=\"active: columns == &quot;col-50&quot;\">2 Cols</a>\n      <a href=\"#\" data-component=\"col-33\" v-on=\"click: onTemplateSelected\" class=\"e-contextual-link\" v-class=\"active: columns == &quot;col-33&quot;\">3 Cols</a>\n      <a href=\"#\" data-component=\"col-25\" v-on=\"click: onTemplateSelected\" class=\"e-contextual-link\" v-class=\"active: columns == &quot;col-25&quot;\">4 Cols</a>\n    </div>\n  </div>";
 var Vue = require('vue');
   var Container = Vue.extend(require('./container.vue'));
@@ -8069,6 +8115,7 @@ var Vue = require('vue');
   module.exports = {
     data: function () {
       return {
+        isDraggable: true,
         onContext: false,
         columns: 'col-50',
         content: []
@@ -8171,7 +8218,7 @@ var Vue = require('vue');
   }
 module.exports.template = __vue_template__;
 
-},{"./columns/col-25.vue":66,"./columns/col-33.vue":67,"./columns/col-50.vue":68,"./container.vue":69,"vue":61}],72:[function(require,module,exports){
+},{"./columns/col-25.vue":68,"./columns/col-33.vue":69,"./columns/col-50.vue":70,"./container.vue":71,"vue":61}],74:[function(require,module,exports){
 /**
  * Bootstrap UI application with Vue
  */
@@ -8180,7 +8227,12 @@ var Vue = require('vue');
 Vue.config.debug = true;
 
 var app = new Vue(require('./app.vue'));
-},{"./app.vue":63,"vue":61}],73:[function(require,module,exports){
+
+// Expose public API
+module.exports = {
+	getContent: app.getContent
+}
+},{"./app.vue":63,"vue":61}],75:[function(require,module,exports){
 var __vue_template__ = "<div class=\"e-model e-div unit-33\" draggable=\"true\" v-on=\"dragstart: onDragStart\">Div</div>";
 module.exports = {
     replace: true,
@@ -8197,13 +8249,46 @@ module.exports = {
   }
 module.exports.template = __vue_template__;
 
-},{}],74:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
+var __vue_template__ = "<div class=\"e-model e-h1 unit-33\" draggable=\"true\" v-on=\"dragstart: onDragStart\">H1</div>";
+module.exports = {
+    replace: true,
+    data: function () {
+      return {
+        model: 'H1'
+      }
+    },
+    methods: {
+      onDragStart: function (event) {
+        this.$dispatch('editables:sidebar:drag-item', this.model);
+      }
+    }
+  }
+module.exports.template = __vue_template__;
+
+},{}],77:[function(require,module,exports){
+var __vue_template__ = "<div class=\"e-model e-p unit-33\" draggable=\"true\" v-on=\"dragstart: onDragStart\">P</div>";
+module.exports = {
+    replace: true,
+    data: function () {
+      return {
+        model: 'P'
+      }
+    },
+    methods: {
+      onDragStart: function (event) {
+        this.$dispatch('editables:sidebar:drag-item', this.model);
+      }
+    }
+  }
+module.exports.template = __vue_template__;
+
+},{}],78:[function(require,module,exports){
 var __vue_template__ = "<div class=\"e-model e-row unit-33\" draggable=\"true\" v-on=\"dragstart: onDragStart\">Row</div>";
 module.exports = {
     replace: true,
     data: function () {
       return {
-        isModel: true,
         model: 'Row'
       }
     },
@@ -8215,7 +8300,7 @@ module.exports = {
   }
 module.exports.template = __vue_template__;
 
-},{}],75:[function(require,module,exports){
+},{}],79:[function(require,module,exports){
 var __vue_template__ = "<div class=\"e-model e-section unit-33\" draggable=\"true\" v-on=\"dragstart: onDragStart\">Section</div>";
 module.exports = {
     replace: true,
@@ -8232,7 +8317,7 @@ module.exports = {
   }
 module.exports.template = __vue_template__;
 
-},{}],76:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 var __vue_template__ = "<section id=\"editables-preview\" v-on=\"drop: onDrop, dragenter: onDragEnter, dragover: onDragOver, dragleave: onDragLeave\"></section>";
 module.exports = {
     replace: true,
@@ -8282,16 +8367,18 @@ module.exports = {
   }
 module.exports.template = __vue_template__;
 
-},{}],77:[function(require,module,exports){
-var __vue_template__ = "<aside id=\"editables-sidebar\">\n    <header>\n      <h2>Editables</h2>\n    </header>\n    <hr>\n    <div id=\"containers\" class=\"units-row\">\n      <model-div></model-div>\n      <model-section></model-section>\n      <model-row></model-row>\n    </div>\n  </aside>";
+},{}],81:[function(require,module,exports){
+var __vue_template__ = "<aside id=\"editables-sidebar\">\n    <header>\n      <h2>Editables</h2>\n    </header>\n    <hr>\n    <div id=\"containers\" class=\"units-row\">\n      <model-div></model-div>\n      <model-section></model-section>\n      <model-row></model-row>\n    </div>\n    <div id=\"containers\" class=\"units-row\">\n      <model-h1></model-h1>\n      <model-p></model-p>\n    </div>\n  </aside>";
 module.exports = {
     replace: true,
     components: {
       'model-div': require('./models/model-div.vue'),
       'model-section': require('./models/model-section.vue'),
       'model-row': require('./models/model-row.vue'),
+      'model-h1': require('./models/model-h1.vue'),
+      'model-p': require('./models/model-p.vue')
     }
   }
 module.exports.template = __vue_template__;
 
-},{"./models/model-div.vue":73,"./models/model-row.vue":74,"./models/model-section.vue":75}]},{},[72]);
+},{"./models/model-div.vue":75,"./models/model-h1.vue":76,"./models/model-p.vue":77,"./models/model-row.vue":78,"./models/model-section.vue":79}]},{},[74]);

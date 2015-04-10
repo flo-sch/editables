@@ -4,7 +4,7 @@
     <header id='editables-preview-header'>
       <h2>Content</h2>
     </header>
-    <editables-preview></editables-preview>
+    <editables-preview v-ref='Preview'></editables-preview>
   </section>
 </template>
 
@@ -30,7 +30,9 @@
         models: {
           Div: Editable.extend(require('./components/containers/blocks/div.vue')),
           Section: Container.extend(require('./components/containers/blocks/section.vue')),
-          Row: Container.extend(require('./components/containers/row.vue'))
+          Row: Container.extend(require('./components/containers/row.vue')),
+          P: Editable.extend(require('./components/containers/blocks/p.vue')),
+          H1: Editable.extend(require('./components/containers/blocks/h1.vue'))
         }
       }
     },
@@ -44,6 +46,11 @@
     components: {
       'editables-sidebar': require('./views/sidebar-view.vue'),
       'editables-preview': require('./views/preview-view.vue')
+    },
+    methods: {
+      getContent: function () {
+        return this.$.Preview.$el.innerHTML;
+      }
     }
   }
 </script>

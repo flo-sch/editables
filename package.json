@@ -8,8 +8,9 @@
     "watch-script": "watchify -v -t vueify -e src/main.js -o build/editables.js",
     "build-styles": "cd assets && npm install && bower install && gulp build",
     "build-script": "browserify -t vueify src/main.js | uglifyjs -c -m > build/editables.min.js",
+    "build-standalone-script": "browserify --standalone Editable -t vueify src/main.js | uglifyjs -c -m > build/editables.standalone.min.js",
     "watch": "npm run watch-script & npm run watch-styles",
-    "build": "npm run build-script & npm run build-styles"
+    "build": "npm run build-script & npm run build-standalone-script & npm run build-styles"
   },
   "repository": {
     "type": "git",
