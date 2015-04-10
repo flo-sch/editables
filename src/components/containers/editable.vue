@@ -1,5 +1,5 @@
 <template>
-  <div class='e-element e-div-editable droppable' contenteditable='false' draggable='{{ isDraggable }}' v-on='click: onClick, dblclick: onDoubleClick, dragstart: onDragStart, dragenter: onDragEnter, dragleave: onDragLeave, drop: onDrop'>Lorem ipsum Sit incididunt quis officia officia consequat et minim enim Excepteur consequat incididunt quis sunt exercitation veniam ad culpa nisi eu enim culpa id adipisicing elit in ut in enim culpa dolor labore sunt dolore.</div>
+  <div class='e-element e-div-editable droppable' contenteditable='false' draggable='{{ isDraggable }}' v-on='click: onClick, dblclick: onDoubleClick, dragstart: onDragStart, dragenter: onDragEnter, dragleave: onDragLeave, drop: onDrop, contextmenu: lock'>Lorem ipsum Sit incididunt quis officia officia consequat et minim enim Excepteur consequat incididunt quis sunt exercitation veniam ad culpa nisi eu enim culpa id adipisicing elit in ut in enim culpa dolor labore sunt dolore.</div>
 </template>
 
 <script>
@@ -45,7 +45,6 @@
         this.$el.blur();
 
         if (this.isDraggable) {
-          console.log('reset draggable', this.$el);
           this.$el.setAttribute('draggable', true);
         }
       },
@@ -57,6 +56,11 @@
       },
       onDoubleClick: function (event) {
         event.stopPropagation();
+      },
+      lock: function (event) {
+        if (event.stopPropagation) {
+          event.stopPropagation();
+        }
       }
     }
   }

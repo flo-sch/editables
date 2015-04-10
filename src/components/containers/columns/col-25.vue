@@ -17,7 +17,8 @@
 </script>
 
 <template>
-  <content-editable class="e-element e-col unit-33">Col</content-editable>
-  <content-editable class="e-element e-col unit-33">Col</content-editable>
-  <content-editable class="e-element e-col unit-33">Col</content-editable>
+  <content-editable class="e-element e-col unit-25">Col</content-editable>
+  <content-editable class="e-element e-col unit-25">Col</content-editable>
+  <content-editable class="e-element e-col unit-25">Col</content-editable>
+  <content-editable class="e-element e-col unit-25">Col</content-editable>
 </template>

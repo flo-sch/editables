@@ -2595,7 +2595,7 @@ html body #editables .e-model {
 }
 #editables-preview-container #editables-preview-header {
   position: relative;
-  background: black;
+  background: #1f242a;
   color: white;
   text-align: center;
   padding: 8px 0;
@@ -2652,6 +2652,39 @@ html body #editables .e-model {
 }
 #editables-preview-container #editables-preview .e-element:hover, #editables-preview-container #editables-preview .e-element:active, #editables-preview-container #editables-preview .e-element:focus {
   border-color: #7979de;
+}
+
+html body .e-contextual {
+  position: fixed;
+  background: #1f242a;
+  color: #d7d9da;
+  border: 1px solid #d7d9da;
+  z-index: 999;
+  min-width: 120px;
+}
+html body .e-contextual .e-contextual-title {
+  color: inherit;
+  padding: 10px 10px 0 10px;
+}
+html body .e-contextual .e-contextual-divider {
+  margin: 5px 0;
+}
+html body .e-contextual .e-contextual-links {
+  padding: 5px 0;
+}
+html body .e-contextual .e-contextual-links .e-contextual-link {
+  display: block;
+  text-decoration: none;
+  margin: 0 0 5px 0;
+  padding: 0 10px;
+}
+html body .e-contextual .e-contextual-links .e-contextual-link:hover, html body .e-contextual .e-contextual-links .e-contextual-link:active, html body .e-contextual .e-contextual-links .e-contextual-link:focus, html body .e-contextual .e-contextual-links .e-contextual-link.active {
+  text-decoration: none;
+  background: #d7d9da;
+  color: #1f242a;
+}
+html body .e-contextual .e-contextual-links:hover, html body .e-contextual .e-contextual-links:active, html body .e-contextual .e-contextual-links:focus {
+  text-decoration: none;
 }
 
 #editables-sidebar {

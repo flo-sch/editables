@@ -1,8 +1,3 @@
-<template>
-  <content-editable class="e-element e-col unit-50">Col</content-editable>
-  <content-editable class="e-element e-col unit-50">Col</content-editable>
-</template>
-
 <script>
   var Vue = require('vue');
   var Container = Vue.extend(require('../container.vue'));
@@ -20,3 +15,8 @@
     }
   }
 </script>
+
+<template>
+  <content-editable class="e-element e-col unit-50" draggable='false'>Col</content-editable>
+  <content-editable class="e-element e-col unit-50" draggable='false'>Col</content-editable>
+</template>
