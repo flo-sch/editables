@@ -1,0 +1,43 @@
+@import "../colors";
+
+html {
+  body {
+    .e-contextual {
+      position: fixed;
+      background: $theme-dark;
+      color: $theme-light;
+      border: 1px solid $theme-light;
+      z-index: 999;
+      min-width: 120px;
+      .e-contextual-title {
+        color: inherit;
+        padding: 10px 10px 0 10px;
+      }
+      .e-contextual-divider {
+        margin: 5px 0;
+      }
+      .e-contextual-links {
+        padding: 5px 0;
+        .e-contextual-link {
+          display: block;
+          text-decoration: none;
+          margin: 0 0 5px 0;
+          padding: 0 10px;
+          &:hover,
+          &:active,
+          &:focus,
+          &.active {
+            text-decoration: none;
+            background: $theme-light;
+            color: $theme-dark;
+          }
+        }
+        &:hover,
+        &:active,
+        &:focus {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

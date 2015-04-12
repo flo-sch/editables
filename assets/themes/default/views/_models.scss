@@ -1,0 +1,25 @@
+@import "../colors";
+@import "../variables";
+
+html {
+    body {
+        #editables-nav {
+            background: $theme-dark;
+            color: $theme-light;
+            h1,
+            h2,
+            h3 {
+                color: inherit;
+                text-align: center;
+            }
+            #editables-title {
+                margin: 0;
+                padding: 10px 0 5px;
+            }
+            .units-row {
+                margin-bottom: 5px;
+            }
+            @import "containers/model";
+        }
+    }
+}

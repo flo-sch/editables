@@ -7808,7 +7808,7 @@ function traverse (obj) {
 
 module.exports = Watcher
 },{"./batcher":7,"./config":11,"./observer":44,"./parsers/expression":47,"./util":58}],63:[function(require,module,exports){
-var __vue_template__ = "<editables-sidebar></editables-sidebar>\n  <section id=\"editables-preview-container\">\n    <header id=\"editables-preview-header\">\n      <h2>Content</h2>\n    </header>\n    <editables-preview v-ref=\"Preview\"></editables-preview>\n  </section>";
+var __vue_template__ = "<editables-models></editables-models>\n  <section id=\"editables-preview-container\">\n    <editables-preview v-ref=\"Preview\"></editables-preview>\n  </section>";
 var Vue = require('vue');
   var Container = Vue.extend(require('./components/containers/container.vue'));
   var Editable = Container.extend(require('./components/containers/editable.vue'));
@@ -7844,7 +7844,7 @@ var Vue = require('vue');
       });
     },
     components: {
-      'editables-sidebar': require('./views/sidebar-view.vue'),
+      'editables-models': require('./views/models-view.vue'),
       'editables-preview': require('./views/preview-view.vue')
     },
     methods: {
@@ -7855,7 +7855,7 @@ var Vue = require('vue');
   }
 module.exports.template = __vue_template__;
 
-},{"./components/containers/blocks/div.vue":64,"./components/containers/blocks/h1.vue":65,"./components/containers/blocks/p.vue":66,"./components/containers/blocks/section.vue":67,"./components/containers/container.vue":71,"./components/containers/editable.vue":72,"./components/containers/row.vue":73,"./views/preview-view.vue":80,"./views/sidebar-view.vue":81,"vue":61}],64:[function(require,module,exports){
+},{"./components/containers/blocks/div.vue":64,"./components/containers/blocks/h1.vue":65,"./components/containers/blocks/p.vue":66,"./components/containers/blocks/section.vue":67,"./components/containers/container.vue":71,"./components/containers/editable.vue":72,"./components/containers/row.vue":73,"./views/models-view.vue":75,"./views/preview-view.vue":81,"vue":61}],64:[function(require,module,exports){
 module.exports = {
     data: function () {
       return {
@@ -8233,6 +8233,20 @@ module.exports = {
 	getContent: app.getContent
 }
 },{"./app.vue":63,"vue":61}],75:[function(require,module,exports){
+var __vue_template__ = "<nav id=\"editables-nav\">\n    <header>\n      <h2 id=\"editables-title\">Editables</h2>\n    </header>\n    <div id=\"containers\" class=\"units-row\">\n      <div class=\"unit-20 units-row\">\n        <model-div></model-div>\n        <model-section></model-section>\n        <model-row></model-row>\n      </div>\n      <div class=\"unit-20 units-row\">\n        <model-h1></model-h1>\n        <model-p></model-p>\n      </div>\n    </div>\n  </nav>";
+module.exports = {
+    replace: true,
+    components: {
+      'model-div': require('./models/model-div.vue'),
+      'model-section': require('./models/model-section.vue'),
+      'model-row': require('./models/model-row.vue'),
+      'model-h1': require('./models/model-h1.vue'),
+      'model-p': require('./models/model-p.vue')
+    }
+  }
+module.exports.template = __vue_template__;
+
+},{"./models/model-div.vue":76,"./models/model-h1.vue":77,"./models/model-p.vue":78,"./models/model-row.vue":79,"./models/model-section.vue":80}],76:[function(require,module,exports){
 var __vue_template__ = "<div class=\"e-model e-div unit-33\" draggable=\"true\" v-on=\"dragstart: onDragStart\">Div</div>";
 module.exports = {
     replace: true,
@@ -8249,7 +8263,7 @@ module.exports = {
   }
 module.exports.template = __vue_template__;
 
-},{}],76:[function(require,module,exports){
+},{}],77:[function(require,module,exports){
 var __vue_template__ = "<div class=\"e-model e-h1 unit-33\" draggable=\"true\" v-on=\"dragstart: onDragStart\">H1</div>";
 module.exports = {
     replace: true,
@@ -8266,7 +8280,7 @@ module.exports = {
   }
 module.exports.template = __vue_template__;
 
-},{}],77:[function(require,module,exports){
+},{}],78:[function(require,module,exports){
 var __vue_template__ = "<div class=\"e-model e-p unit-33\" draggable=\"true\" v-on=\"dragstart: onDragStart\">P</div>";
 module.exports = {
     replace: true,
@@ -8283,7 +8297,7 @@ module.exports = {
   }
 module.exports.template = __vue_template__;
 
-},{}],78:[function(require,module,exports){
+},{}],79:[function(require,module,exports){
 var __vue_template__ = "<div class=\"e-model e-row unit-33\" draggable=\"true\" v-on=\"dragstart: onDragStart\">Row</div>";
 module.exports = {
     replace: true,
@@ -8300,7 +8314,7 @@ module.exports = {
   }
 module.exports.template = __vue_template__;
 
-},{}],79:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 var __vue_template__ = "<div class=\"e-model e-section unit-33\" draggable=\"true\" v-on=\"dragstart: onDragStart\">Section</div>";
 module.exports = {
     replace: true,
@@ -8317,7 +8331,7 @@ module.exports = {
   }
 module.exports.template = __vue_template__;
 
-},{}],80:[function(require,module,exports){
+},{}],81:[function(require,module,exports){
 var __vue_template__ = "<section id=\"editables-preview\" v-on=\"drop: onDrop, dragenter: onDragEnter, dragover: onDragOver, dragleave: onDragLeave\"></section>";
 module.exports = {
     replace: true,
@@ -8367,18 +8381,4 @@ module.exports = {
   }
 module.exports.template = __vue_template__;
 
-},{}],81:[function(require,module,exports){
-var __vue_template__ = "<aside id=\"editables-sidebar\">\n    <header>\n      <h2>Editables</h2>\n    </header>\n    <hr>\n    <div id=\"containers\" class=\"units-row\">\n      <model-div></model-div>\n      <model-section></model-section>\n      <model-row></model-row>\n    </div>\n    <div id=\"containers\" class=\"units-row\">\n      <model-h1></model-h1>\n      <model-p></model-p>\n    </div>\n  </aside>";
-module.exports = {
-    replace: true,
-    components: {
-      'model-div': require('./models/model-div.vue'),
-      'model-section': require('./models/model-section.vue'),
-      'model-row': require('./models/model-row.vue'),
-      'model-h1': require('./models/model-h1.vue'),
-      'model-p': require('./models/model-p.vue')
-    }
-  }
-module.exports.template = __vue_template__;
-
-},{"./models/model-div.vue":75,"./models/model-h1.vue":76,"./models/model-p.vue":77,"./models/model-row.vue":78,"./models/model-section.vue":79}]},{},[74]);
+},{}]},{},[74]);

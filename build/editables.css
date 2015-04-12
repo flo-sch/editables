@@ -2591,30 +2591,20 @@ html body #editables .e-model {
 
 #editables-preview-container {
   height: 100%;
-  margin-left: 250px;
-}
-#editables-preview-container #editables-preview-header {
-  position: relative;
-  background: #1f242a;
-  color: white;
-  text-align: center;
-  padding: 8px 0;
-  z-index: 10;
-}
-#editables-preview-container #editables-preview-header h2 {
-  margin: 0;
-  color: inherit;
-  line-height: 34px;
 }
 #editables-preview-container #editables-preview {
-  margin-top: -50px;
-  padding: 60px 10px 0 10px;
+  padding: 10px;
   height: 100%;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   background: #f7f7f1;
   transition: all 0.11s ease-in-out;
   overflow: auto;
+}
+#editables-preview-container #editables-preview h1,
+#editables-preview-container #editables-preview h2,
+#editables-preview-container #editables-preview h3 {
+  font-family: "Source Sans Pro", Arial, sans-serif;
 }
 #editables-preview-container #editables-preview.droppable {
   background: #dde7f1;
@@ -2687,22 +2677,24 @@ html body .e-contextual .e-contextual-links:hover, html body .e-contextual .e-co
   text-decoration: none;
 }
 
-#editables-sidebar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 250px;
-  height: 100%;
-  padding: 15px 10px;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+html body #editables-nav {
   background: #1f242a;
   color: #d7d9da;
 }
-#editables-sidebar header h2 {
+html body #editables-nav h1,
+html body #editables-nav h2,
+html body #editables-nav h3 {
   color: inherit;
+  text-align: center;
 }
-#editables-sidebar .e-model {
+html body #editables-nav #editables-title {
+  margin: 0;
+  padding: 10px 0 5px;
+}
+html body #editables-nav .units-row {
+  margin-bottom: 5px;
+}
+html body #editables-nav .e-model {
   height: 50px;
   line-height: 50px;
   text-align: center;

@@ -1,19 +1,20 @@
 <template>
-  <aside id='editables-sidebar'>
+  <nav id='editables-nav'>
     <header>
-      <h2>Editables</h2>
+      <h2 id='editables-title'>Editables</h2>
     </header>
-    <hr />
     <div id='containers' class='units-row'>
-      <model-div></model-div>
-      <model-section></model-section>
-      <model-row></model-row>
+      <div class='unit-20 units-row'>
+        <model-div></model-div>
+        <model-section></model-section>
+        <model-row></model-row>
+      </div>
+      <div class='unit-20 units-row'>
+        <model-h1></model-h1>
+        <model-p></model-p>
+      </div>
     </div>
-    <div id='containers' class='units-row'>
-      <model-h1></model-h1>
-      <model-p></model-p>
-    </div>
-  </aside>
+  </nav>
 </template>
 
 <script>

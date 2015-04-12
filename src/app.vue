@@ -1,9 +1,6 @@
 <template>
-  <editables-sidebar></editables-sidebar>
+  <editables-models></editables-models>
   <section id='editables-preview-container'>
-    <header id='editables-preview-header'>
-      <h2>Content</h2>
-    </header>
     <editables-preview v-ref='Preview'></editables-preview>
   </section>
 </template>
@@ -44,7 +41,7 @@
       });
     },
     components: {
-      'editables-sidebar': require('./views/sidebar-view.vue'),
+      'editables-models': require('./views/models-view.vue'),
       'editables-preview': require('./views/preview-view.vue')
     },
     methods: {

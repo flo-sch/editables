@@ -1,0 +1,10 @@
+@import "../../colors";
+
+.e-model {
+  height: $sidebar-model-height;
+  line-height: $sidebar-model-height;
+  text-align: center;
+  background: $theme-light;
+  color: $theme-dark;
+  border: 3px solid darken($theme-light, 8);
+}
