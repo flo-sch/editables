@@ -6,10 +6,6 @@
 </template>
 
 <script>
-  var Vue = require('vue');
-  var Container = Vue.extend(require('./components/containers/container.vue'));
-  var Editable = Container.extend(require('./components/containers/editable.vue'));
-
   module.exports = {
     el: '#editables',
     events: {
@@ -25,11 +21,11 @@
         currentDraggedModel: null,
         currentDraggedElement: null,
         models: {
-          Div: Editable.extend(require('./components/containers/blocks/div.vue')),
-          Section: Container.extend(require('./components/containers/blocks/section.vue')),
-          Row: Container.extend(require('./components/containers/row.vue')),
-          P: Editable.extend(require('./components/containers/blocks/p.vue')),
-          H1: Editable.extend(require('./components/containers/blocks/h1.vue'))
+          Div: require('./components/containers/blocks/div.vue'),
+          Section: require('./components/containers/blocks/section.vue'),
+          Row: require('./components/containers/blocks/row.vue'),
+          P: require('./components/containers/blocks/p.vue'),
+          H1: require('./components/containers/blocks/h1.vue')
         }
       }
     },

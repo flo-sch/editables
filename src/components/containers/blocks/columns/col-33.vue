@@ -1,8 +1,7 @@
 <script>
-  var Vue = require('vue');
-  var Container = Vue.extend(require('../container.vue'));
+  var Container = require('../../container.vue');
 
-  module.exports = {
+  module.exports = Container.extend({
     inherit: true,
     replace: true,
     data: function () {
@@ -11,9 +10,9 @@
       }
     },
     components: {
-      'content-editable': Container.extend(require('../editable.vue'))
+      'content-editable': require('../../editable.vue')
     }
-  }
+  });
 </script>
 
 <template>

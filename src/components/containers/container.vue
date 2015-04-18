@@ -1,12 +1,14 @@
 <script>
-  module.exports = {
+  var Vue = require('vue');
+
+  module.exports = Vue.extend({
     inherit: true,
     methods: {
       onDragStart: function (event) {
         if (this.isDraggable) {
           this.currentDraggedElement = this;
         }
-        
+
         event.stopPropagation();
       },
       onDragOver: function (event) {
@@ -50,5 +52,5 @@
         event.stopPropagation();
       }
     }
-  }
+  });
 </script>

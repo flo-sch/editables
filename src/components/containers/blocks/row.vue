@@ -12,10 +12,9 @@
 </template>
 
 <script>
-  var Vue = require('vue');
-  var Container = Vue.extend(require('./container.vue'));
+  var Container = require('../container.vue');
 
-  module.exports = {
+  module.exports = Container.extend({
     data: function () {
       return {
         isDraggable: true,
@@ -47,9 +46,9 @@
       return el;
     },
     components: {
-      'col-50': Container.extend(require('./columns/col-50.vue')),
-      'col-33': Container.extend(require('./columns/col-33.vue')),
-      'col-25': Container.extend(require('./columns/col-25.vue'))
+      'col-50': require('./columns/col-50.vue'),
+      'col-33': require('./columns/col-33.vue'),
+      'col-25': require('./columns/col-25.vue')
     },
     methods: {
       stick: function () {
@@ -118,5 +117,5 @@
         }
       }
     }
-  }
+  });
 </script>

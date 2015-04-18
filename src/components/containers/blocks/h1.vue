@@ -1,10 +1,7 @@
-<template>
-  <h1 class='e-element e-h1 droppable' contenteditable='false' draggable='{{ isDraggable }}' v-on='click: onClick, dblclick: onDoubleClick, dragstart: onDragStart, dragenter: onDragEnter, dragleave: onDragLeave, drop: onDrop, contextmenu: lock'>TITLE</h1>
-</template>
-
-
 <script>
-  module.exports = {
+  var Editable = require('../editable.vue');
+
+  module.exports = Editable.extend({
     data: function () {
       return {
         isDraggable: true
@@ -19,5 +16,9 @@
 
       return el;
     }
-  }
+  });
 </script>
+
+<template>
+  <h1 class='e-element e-h1 droppable' contenteditable='false' draggable='{{ isDraggable }}' v-on='click: onClick, dblclick: onDoubleClick, dragstart: onDragStart, dragenter: onDragEnter, dragleave: onDragLeave, drop: onDrop, contextmenu: lock'>TITLE</h1>
+</template>

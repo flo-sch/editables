@@ -7809,11 +7809,7 @@ function traverse (obj) {
 module.exports = Watcher
 },{"./batcher":7,"./config":11,"./observer":44,"./parsers/expression":47,"./util":58}],63:[function(require,module,exports){
 var __vue_template__ = "<editables-models></editables-models>\n  <section id=\"editables-preview-container\">\n    <editables-preview v-ref=\"Preview\"></editables-preview>\n  </section>";
-var Vue = require('vue');
-  var Container = Vue.extend(require('./components/containers/container.vue'));
-  var Editable = Container.extend(require('./components/containers/editable.vue'));
-
-  module.exports = {
+module.exports = {
     el: '#editables',
     events: {
       'editables:sidebar:drag-item': function (model) {
@@ -7828,11 +7824,11 @@ var Vue = require('vue');
         currentDraggedModel: null,
         currentDraggedElement: null,
         models: {
-          Div: Editable.extend(require('./components/containers/blocks/div.vue')),
-          Section: Container.extend(require('./components/containers/blocks/section.vue')),
-          Row: Container.extend(require('./components/containers/row.vue')),
-          P: Editable.extend(require('./components/containers/blocks/p.vue')),
-          H1: Editable.extend(require('./components/containers/blocks/h1.vue'))
+          Div: require('./components/containers/blocks/div.vue'),
+          Section: require('./components/containers/blocks/section.vue'),
+          Row: require('./components/containers/blocks/row.vue'),
+          P: require('./components/containers/blocks/p.vue'),
+          H1: require('./components/containers/blocks/h1.vue')
         }
       }
     },
@@ -7855,8 +7851,64 @@ var Vue = require('vue');
   }
 module.exports.template = __vue_template__;
 
-},{"./components/containers/blocks/div.vue":64,"./components/containers/blocks/h1.vue":65,"./components/containers/blocks/p.vue":66,"./components/containers/blocks/section.vue":67,"./components/containers/container.vue":71,"./components/containers/editable.vue":72,"./components/containers/row.vue":73,"./views/models-view.vue":75,"./views/preview-view.vue":81,"vue":61}],64:[function(require,module,exports){
-module.exports = {
+},{"./components/containers/blocks/div.vue":67,"./components/containers/blocks/h1.vue":68,"./components/containers/blocks/p.vue":69,"./components/containers/blocks/row.vue":70,"./components/containers/blocks/section.vue":71,"./views/models-view.vue":75,"./views/preview-view.vue":81}],64:[function(require,module,exports){
+var __vue_template__ = "<content-editable class=\"e-element e-col unit-25\">Col</content-editable>\n  <content-editable class=\"e-element e-col unit-25\">Col</content-editable>\n  <content-editable class=\"e-element e-col unit-25\">Col</content-editable>\n  <content-editable class=\"e-element e-col unit-25\">Col</content-editable>";
+var Container = require('../../container.vue');
+
+  module.exports = Container.extend({
+    inherit: true,
+    replace: true,
+    data: function () {
+      return {
+        isDraggable: false
+      }
+    },
+    components: {
+      'content-editable': require('../../editable.vue')
+    }
+  });
+module.exports.template = __vue_template__;
+
+},{"../../container.vue":72,"../../editable.vue":73}],65:[function(require,module,exports){
+var __vue_template__ = "<content-editable class=\"e-element e-col unit-33\">Col</content-editable>\n  <content-editable class=\"e-element e-col unit-33\">Col</content-editable>\n  <content-editable class=\"e-element e-col unit-33\">Col</content-editable>";
+var Container = require('../../container.vue');
+
+  module.exports = Container.extend({
+    inherit: true,
+    replace: true,
+    data: function () {
+      return {
+        isDraggable: false
+      }
+    },
+    components: {
+      'content-editable': require('../../editable.vue')
+    }
+  });
+module.exports.template = __vue_template__;
+
+},{"../../container.vue":72,"../../editable.vue":73}],66:[function(require,module,exports){
+var __vue_template__ = "<content-editable class=\"e-element e-col unit-50\" draggable=\"false\">Col</content-editable>\n  <content-editable class=\"e-element e-col unit-50\" draggable=\"false\">Col</content-editable>";
+var Container = require('../../container.vue');
+
+  module.exports = Container.extend({
+    inherit: true,
+    replace: true,
+    data: function () {
+      return {
+        isDraggable: false
+      }
+    },
+    components: {
+      'content-editable': require('../../editable.vue')
+    }
+  });
+module.exports.template = __vue_template__;
+
+},{"../../container.vue":72,"../../editable.vue":73}],67:[function(require,module,exports){
+var Container = require('../container.vue');
+
+  module.exports = Container.extend({
     data: function () {
       return {
         isDraggable: true
@@ -7871,11 +7923,13 @@ module.exports = {
 
       return el;
     }
-  }
+  });
 
-},{}],65:[function(require,module,exports){
+},{"../container.vue":72}],68:[function(require,module,exports){
 var __vue_template__ = "<h1 class=\"e-element e-h1 droppable\" contenteditable=\"false\" draggable=\"{{ isDraggable }}\" v-on=\"click: onClick, dblclick: onDoubleClick, dragstart: onDragStart, dragenter: onDragEnter, dragleave: onDragLeave, drop: onDrop, contextmenu: lock\">TITLE</h1>";
-module.exports = {
+var Editable = require('../editable.vue');
+
+  module.exports = Editable.extend({
     data: function () {
       return {
         isDraggable: true
@@ -7890,12 +7944,14 @@ module.exports = {
 
       return el;
     }
-  }
+  });
 module.exports.template = __vue_template__;
 
-},{}],66:[function(require,module,exports){
+},{"../editable.vue":73}],69:[function(require,module,exports){
 var __vue_template__ = "<p class=\"e-element e-p droppable\" contenteditable=\"false\" draggable=\"{{ isDraggable }}\" v-on=\"click: onClick, dblclick: onDoubleClick, dragstart: onDragStart, dragenter: onDragEnter, dragleave: onDragLeave, drop: onDrop, contextmenu: lock\">Lorem ipsum Dolor non nisi eiusmod nostrud culpa esse est irure ex magna occaecat non qui veniam ut nulla amet eiusmod qui non in dolore amet dolor Excepteur deserunt voluptate non officia occaecat esse in nulla ullamco voluptate laboris id officia commodo commodo ex aliquip Duis in consectetur fugiat dolor commodo sed dolore laborum in Duis sit pariatur aliqua est fugiat do est commodo Duis ut dolore incididunt aliquip ex ex anim enim est id est pariatur cupidatat pariatur consectetur reprehenderit dolor sit irure Excepteur ullamco reprehenderit sunt enim cupidatat nulla aute non eu enim anim consequat ea reprehenderit dolore ex eu eiusmod officia ea amet do incididunt sed pariatur in magna cupidatat tempor ea eu et cillum sed eu consequat quis proident esse magna ut quis deserunt id magna elit Ut sunt consequat irure in consectetur irure nostrud irure culpa et occaecat consequat commodo aliquip deserunt aute in ut cillum labore magna est cillum aliquip ad laborum qui minim mollit fugiat est anim enim esse cupidatat ut irure dolor nulla qui exercitation id incididunt amet non voluptate veniam aliquip dolore nisi irure do irure sint consectetur ullamco voluptate eiusmod consectetur occaecat qui minim nostrud velit ut veniam ex do tempor sunt enim qui ut laboris incididunt non nulla quis sint eu in quis adipisicing sint quis consequat aliqua officia amet.</p>";
-module.exports = {
+var Editable = require('../editable.vue');
+
+  module.exports = Editable.extend({
     data: function () {
       return {
         isDraggable: true
@@ -7910,209 +7966,14 @@ module.exports = {
 
       return el;
     }
-  }
+  });
 module.exports.template = __vue_template__;
 
-},{}],67:[function(require,module,exports){
-module.exports = {
-    data: function () {
-      return {
-        isDraggable: true
-      }
-    },
-    el: function () {
-      var el = document.createElement('section');
-      el.classList.add('e-element');
-      el.classList.add('e-section');
-      el.setAttribute('draggable', true);
-      el.setAttribute('v-on', 'dragstart: onDragStart, dragenter: onDragEnter, dragleave: onDragLeave, drop: onDrop');
-
-      return el;
-    }
-  }
-
-},{}],68:[function(require,module,exports){
-var __vue_template__ = "<content-editable class=\"e-element e-col unit-25\">Col</content-editable>\n  <content-editable class=\"e-element e-col unit-25\">Col</content-editable>\n  <content-editable class=\"e-element e-col unit-25\">Col</content-editable>\n  <content-editable class=\"e-element e-col unit-25\">Col</content-editable>";
-var Vue = require('vue');
-  var Container = Vue.extend(require('../container.vue'));
-
-  module.exports = {
-    inherit: true,
-    replace: true,
-    data: function () {
-      return {
-        isDraggable: false
-      }
-    },
-    components: {
-      'content-editable': Container.extend(require('../editable.vue'))
-    }
-  }
-module.exports.template = __vue_template__;
-
-},{"../container.vue":71,"../editable.vue":72,"vue":61}],69:[function(require,module,exports){
-var __vue_template__ = "<content-editable class=\"e-element e-col unit-33\">Col</content-editable>\n  <content-editable class=\"e-element e-col unit-33\">Col</content-editable>\n  <content-editable class=\"e-element e-col unit-33\">Col</content-editable>";
-var Vue = require('vue');
-  var Container = Vue.extend(require('../container.vue'));
-
-  module.exports = {
-    inherit: true,
-    replace: true,
-    data: function () {
-      return {
-        isDraggable: false
-      }
-    },
-    components: {
-      'content-editable': Container.extend(require('../editable.vue'))
-    }
-  }
-module.exports.template = __vue_template__;
-
-},{"../container.vue":71,"../editable.vue":72,"vue":61}],70:[function(require,module,exports){
-var __vue_template__ = "<content-editable class=\"e-element e-col unit-50\" draggable=\"false\">Col</content-editable>\n  <content-editable class=\"e-element e-col unit-50\" draggable=\"false\">Col</content-editable>";
-var Vue = require('vue');
-  var Container = Vue.extend(require('../container.vue'));
-
-  module.exports = {
-    inherit: true,
-    replace: true,
-    data: function () {
-    	return {
-    		isDraggable: false
-    	}
-    },
-    components: {
-      'content-editable': Container.extend(require('../editable.vue'))
-    }
-  }
-module.exports.template = __vue_template__;
-
-},{"../container.vue":71,"../editable.vue":72,"vue":61}],71:[function(require,module,exports){
-module.exports = {
-    inherit: true,
-    methods: {
-      onDragStart: function (event) {
-        if (this.isDraggable) {
-          this.currentDraggedElement = this;
-        }
-        
-        event.stopPropagation();
-      },
-      onDragOver: function (event) {
-        event.preventDefault();
-      },
-      onDragEnter: function (event) {
-        this.$el.classList.add('droppable');
-
-        event.stopPropagation();
-      },
-      onDragLeave: function (event) {
-        this.$el.classList.remove('droppable');
-
-        event.stopPropagation();
-      },
-      onDrop: function (event) {
-        this.$el.classList.remove('droppable');
-
-        if (this.currentDraggedModel !== null) {
-          if (this.currentDraggedModel in this.models) {
-            var element = this.$addChild({}, this.models[this.currentDraggedModel]);
-            element.$appendTo(this.$el);
-
-            this.currentDraggedModel = null;
-          } else {
-            console.warn('Unregistred or unsupported model', this.currentDraggedModel);
-          }
-        } else if (this.currentDraggedElement !== null) {
-          try {
-            this.currentDraggedElement.$appendTo(this.$el);
-          }
-          catch (DOMexception) {
-            console.warn('It is impossible to move a container inside its own content.');
-            // TODO
-            // Display visual feedback about this problem
-          }
-
-          this.currentDraggedElement = null;
-        }
-
-        event.stopPropagation();
-      }
-    }
-  }
-
-},{}],72:[function(require,module,exports){
-var __vue_template__ = "<div class=\"e-element e-div-editable droppable\" contenteditable=\"false\" draggable=\"{{ isDraggable }}\" v-on=\"click: onClick, dblclick: onDoubleClick, dragstart: onDragStart, dragenter: onDragEnter, dragleave: onDragLeave, drop: onDrop, contextmenu: lock\">Lorem ipsum Consectetur non qui nulla officia.</div>";
-module.exports = {
-    replace: true,
-    inherit: true,
-    data: function () {
-      return {
-        isEdited: false
-      }
-    },
-    watch: {
-      isEdited: function () {
-        if (this.isEdited) {
-          this.edit();
-        } else {
-          this.unedit();
-        }
-      }
-    },
-    events: {
-      'editables:window:click': function (event) {
-        this.isEdited = false;
-        this.$dispatch('editables:editable:unedit', this);
-      },
-      'editables:editable:edit': function (vm) {
-        this.isEdited = (vm === this);
-      }
-    },
-    methods: {
-      edit: function () {
-        this.$el.setAttribute('contenteditable', true);
-        this.$el.classList.add('edit');
-        this.$el.focus();
-
-        if (this.isDraggable) {
-          this.$el.setAttribute('draggable', false);
-        }
-      },
-      unedit: function () {
-        this.$el.setAttribute('contenteditable', false);
-        this.$el.classList.remove('edit');
-        this.$el.blur();
-
-        if (this.isDraggable) {
-          this.$el.setAttribute('draggable', true);
-        }
-      },
-      onClick: function (event) {
-        event.stopPropagation();
-
-        this.$dispatch('editables:editable:edit', this);
-        this.isEdited = true;
-      },
-      onDoubleClick: function (event) {
-        event.stopPropagation();
-      },
-      lock: function (event) {
-        if (event.stopPropagation) {
-          event.stopPropagation();
-        }
-      }
-    }
-  }
-module.exports.template = __vue_template__;
-
-},{}],73:[function(require,module,exports){
+},{"../editable.vue":73}],70:[function(require,module,exports){
 var __vue_template__ = "<div v-component=\"{{ columns }}\"></div>\n  <div class=\"e-contextual\" v-if=\"onContext\" v-on=\"contextmenu: lock\">\n    <h5 class=\"e-contextual-title\">MENU</h5>\n    <hr class=\"e-contextual-divider\">\n    <div class=\"e-contextual-links\">\n      <a href=\"#\" data-component=\"col-50\" v-on=\"click: onTemplateSelected\" class=\"e-contextual-link\" v-class=\"active: columns == &quot;col-50&quot;\">2 Cols</a>\n      <a href=\"#\" data-component=\"col-33\" v-on=\"click: onTemplateSelected\" class=\"e-contextual-link\" v-class=\"active: columns == &quot;col-33&quot;\">3 Cols</a>\n      <a href=\"#\" data-component=\"col-25\" v-on=\"click: onTemplateSelected\" class=\"e-contextual-link\" v-class=\"active: columns == &quot;col-25&quot;\">4 Cols</a>\n    </div>\n  </div>";
-var Vue = require('vue');
-  var Container = Vue.extend(require('./container.vue'));
+var Container = require('../container.vue');
 
-  module.exports = {
+  module.exports = Container.extend({
     data: function () {
       return {
         isDraggable: true,
@@ -8144,9 +8005,9 @@ var Vue = require('vue');
       return el;
     },
     components: {
-      'col-50': Container.extend(require('./columns/col-50.vue')),
-      'col-33': Container.extend(require('./columns/col-33.vue')),
-      'col-25': Container.extend(require('./columns/col-25.vue'))
+      'col-50': require('./columns/col-50.vue'),
+      'col-33': require('./columns/col-33.vue'),
+      'col-25': require('./columns/col-25.vue')
     },
     methods: {
       stick: function () {
@@ -8215,10 +8076,153 @@ var Vue = require('vue');
         }
       }
     }
-  }
+  });
 module.exports.template = __vue_template__;
 
-},{"./columns/col-25.vue":68,"./columns/col-33.vue":69,"./columns/col-50.vue":70,"./container.vue":71,"vue":61}],74:[function(require,module,exports){
+},{"../container.vue":72,"./columns/col-25.vue":64,"./columns/col-33.vue":65,"./columns/col-50.vue":66}],71:[function(require,module,exports){
+var Container = require('../container.vue');
+
+  module.exports = Container.extend({
+    data: function () {
+      return {
+        isDraggable: true
+      }
+    },
+    el: function () {
+      var el = document.createElement('section');
+      el.classList.add('e-element');
+      el.classList.add('e-section');
+      el.setAttribute('draggable', true);
+      el.setAttribute('v-on', 'dragstart: onDragStart, dragenter: onDragEnter, dragleave: onDragLeave, drop: onDrop');
+
+      return el;
+    }
+  });
+
+},{"../container.vue":72}],72:[function(require,module,exports){
+var Vue = require('vue');
+
+  module.exports = Vue.extend({
+    inherit: true,
+    methods: {
+      onDragStart: function (event) {
+        if (this.isDraggable) {
+          this.currentDraggedElement = this;
+        }
+
+        event.stopPropagation();
+      },
+      onDragOver: function (event) {
+        event.preventDefault();
+      },
+      onDragEnter: function (event) {
+        this.$el.classList.add('droppable');
+
+        event.stopPropagation();
+      },
+      onDragLeave: function (event) {
+        this.$el.classList.remove('droppable');
+
+        event.stopPropagation();
+      },
+      onDrop: function (event) {
+        this.$el.classList.remove('droppable');
+
+        if (this.currentDraggedModel !== null) {
+          if (this.currentDraggedModel in this.models) {
+            var element = this.$addChild({}, this.models[this.currentDraggedModel]);
+            element.$appendTo(this.$el);
+
+            this.currentDraggedModel = null;
+          } else {
+            console.warn('Unregistred or unsupported model', this.currentDraggedModel);
+          }
+        } else if (this.currentDraggedElement !== null) {
+          try {
+            this.currentDraggedElement.$appendTo(this.$el);
+          }
+          catch (DOMexception) {
+            console.warn('It is impossible to move a container inside its own content.');
+            // TODO
+            // Display visual feedback about this problem
+          }
+
+          this.currentDraggedElement = null;
+        }
+
+        event.stopPropagation();
+      }
+    }
+  });
+
+},{"vue":61}],73:[function(require,module,exports){
+var __vue_template__ = "<div class=\"e-element e-div-editable droppable\" contenteditable=\"false\" draggable=\"{{ isDraggable }}\" v-on=\"click: onClick, dblclick: onDoubleClick, dragstart: onDragStart, dragenter: onDragEnter, dragleave: onDragLeave, drop: onDrop, contextmenu: lock\">Lorem ipsum Consectetur non qui nulla officia.</div>";
+var Container = require('./container.vue');
+
+  module.exports = Container.extend({
+    replace: true,
+    inherit: true,
+    data: function () {
+      return {
+        isEdited: false
+      }
+    },
+    watch: {
+      isEdited: function () {
+        if (this.isEdited) {
+          this.edit();
+        } else {
+          this.unedit();
+        }
+      }
+    },
+    events: {
+      'editables:window:click': function (event) {
+        this.isEdited = false;
+        this.$dispatch('editables:editable:unedit', this);
+      },
+      'editables:editable:edit': function (vm) {
+        this.isEdited = (vm === this);
+      }
+    },
+    methods: {
+      edit: function () {
+        this.$el.setAttribute('contenteditable', true);
+        this.$el.classList.add('edit');
+        this.$el.focus();
+
+        if (this.isDraggable) {
+          this.$el.setAttribute('draggable', false);
+        }
+      },
+      unedit: function () {
+        this.$el.setAttribute('contenteditable', false);
+        this.$el.classList.remove('edit');
+        this.$el.blur();
+
+        if (this.isDraggable) {
+          this.$el.setAttribute('draggable', true);
+        }
+      },
+      onClick: function (event) {
+        event.stopPropagation();
+
+        this.$dispatch('editables:editable:edit', this);
+        this.isEdited = true;
+      },
+      onDoubleClick: function (event) {
+        event.stopPropagation();
+      },
+      lock: function (event) {
+        if (event.stopPropagation) {
+          event.stopPropagation();
+        }
+      }
+    }
+  });
+module.exports.template = __vue_template__;
+
+},{"./container.vue":72}],74:[function(require,module,exports){
 /**
  * Bootstrap UI application with Vue
  */

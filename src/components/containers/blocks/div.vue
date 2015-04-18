@@ -1,5 +1,7 @@
 <script>
-  module.exports = {
+  var Container = require('../container.vue');
+
+  module.exports = Container.extend({
     data: function () {
       return {
         isDraggable: true
@@ -14,5 +16,5 @@
 
       return el;
     }
-  }
+  });
 </script>

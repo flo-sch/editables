@@ -3,7 +3,9 @@
 </template>
 
 <script>
-  module.exports = {
+  var Container = require('./container.vue');
+
+  module.exports = Container.extend({
     replace: true,
     inherit: true,
     data: function () {
@@ -63,5 +65,5 @@
         }
       }
     }
-  }
+  });
 </script>
