@@ -24,8 +24,8 @@
           Div: require('./components/containers/blocks/div.vue'),
           Section: require('./components/containers/blocks/section.vue'),
           Row: require('./components/containers/blocks/row.vue'),
-          P: require('./components/containers/blocks/p.vue'),
-          H1: require('./components/containers/blocks/h1.vue')
+          Aside: require('./components/containers/blocks/aside.vue'),
+          Nav: require('./components/containers/blocks/nav.vue')
         }
       }
     },

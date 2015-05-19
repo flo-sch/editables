@@ -10,8 +10,8 @@
         <model-row></model-row>
       </div>
       <div class='unit-20 units-row'>
-        <model-h1></model-h1>
-        <model-p></model-p>
+        <model-aside></model-aside>
+        <model-nav></model-nav>
       </div>
     </div>
   </nav>
@@ -24,8 +24,8 @@
       'model-div': require('./models/model-div.vue'),
       'model-section': require('./models/model-section.vue'),
       'model-row': require('./models/model-row.vue'),
-      'model-h1': require('./models/model-h1.vue'),
-      'model-p': require('./models/model-p.vue')
+      'model-aside': require('./models/model-aside.vue'),
+      'model-nav': require('./models/model-nav.vue')
     }
   }
 </script>

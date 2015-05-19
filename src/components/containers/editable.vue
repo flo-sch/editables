@@ -31,6 +31,9 @@
         this.isEdited = (vm === this);
       }
     },
+    ready: function () {
+      $(this.$el).editable();
+    },
     methods: {
       edit: function () {
         this.$el.setAttribute('contenteditable', true);

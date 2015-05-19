@@ -16,6 +16,8 @@
   ],
   "dependencies": {
     "kube-scss": "*",
-    "normalize-scss": "~3.0.2"
+    "normalize-scss": "~3.0.2",
+    "jquery": "~2.1.4",
+    "font-awesome": "~4.3.0"
   }
 }

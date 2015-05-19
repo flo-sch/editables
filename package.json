@@ -30,11 +30,11 @@
   },
   "homepage": "https://github.com/Flo-Schield-Bobby/editables",
   "dependencies": {
-    "browserify": "^9.0.4",
+    "browserify": "^9.0.8",
     "insert-css": "^0.2.0",
-    "uglify-js": "^2.4.19",
-    "vue": "^0.11.5",
-    "vueify": "^1.1.2"
+    "uglify-js": "^2.4.21",
+    "vue": "^0.11.10",
+    "vueify": "^1.1.5"
   },
   "devDependencies": {
     "node-sass": "^2.1.1",

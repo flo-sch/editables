@@ -1,3 +1,7 @@
+<template>
+  <div class='e-element e-div-editable droppable' contenteditable='false' draggable='{{ isDraggable }}' v-on='click: onClick, dblclick: onDoubleClick, dragstart: onDragStart, dragenter: onDragEnter, dragleave: onDragLeave, drop: onDrop, contextmenu: lock'>Lorem ipsum Consectetur non qui nulla officia.</div>
+</template>
+
 <script>
   var Container = require('../../container.vue');
 
